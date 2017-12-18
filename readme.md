@@ -15,3 +15,8 @@ cd silent
 yarn install
 yarn run dev
 ```
+
+### Website link
+```
+https://silent.netlify.com
+```
