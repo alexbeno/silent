@@ -1,7 +1,17 @@
+body {
+  font-family: $font-courant;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
 h1 {
   font-size: em($size-h1);
-  font-weight: $weight-h1;
   color: $color-h1;
+  font-family: $font-title;
+  letter-spacing: 30px;
+  margin-right: - 30px;
+  font-weight: $medium;
 }
 
 h2 {
@@ -14,6 +24,11 @@ h3 {
   font-size: em($size-h3);
   font-weight: $weight-h3;
   color: $color-h3;
+  opacity: 0.7;
+  width: 430px;
+  text-align: center;
+  margin-top: 39px;
+  line-height: 32px;
 }
 
 h4 {

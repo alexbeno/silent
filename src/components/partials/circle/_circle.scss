@@ -1,0 +1,16 @@
+/**
+* silent 2017
+* [- circlestyle -]
+*/
+
+@import '../../../assets/sass/app';
+
+.circle {
+  width: 460px;
+}
+
+.circle__svg {
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 1500;
+
+}

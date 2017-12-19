@@ -19,7 +19,7 @@ $queryType: min;
 * Color set
 */
 
-$primary-color: $black;
+$primary-color: $white;
 $secondary-color: $blackdown;
 $terciary-color: $blackmed;
 
@@ -27,8 +27,8 @@ $terciary-color: $blackmed;
 * Font set
 */
 
-$font-title: 'greycliff', sans-serif;
-$font-courant: 'Open Sans', sans-serif;
+$font-title: 'butler', sans-serif;
+$font-courant: 'larsseit', sans-serif;
 
 /*
 * base configuration
@@ -42,9 +42,9 @@ $font-courant: 'Open Sans', sans-serif;
 * base font size
 */
 
-$size-h1: 24;
+$size-h1: 42;
 $size-h2: 20;
-$size-h3: 18;
+$size-h3: 20;
 $size-h4: 16;
 $size-courant: 12;
 
@@ -52,10 +52,10 @@ $size-courant: 12;
 * base font weight
 */
 
-$weight-h1: $heavy;
+$weight-h1: $regular;
 $weight-h2: $bold;
-$weight-h3: $medium;
-$weight-h4: $regular;
+$weight-h3: $light;
+$weight-h4: $light;
 $weight-courant: $regular;
 
 /*
@@ -64,6 +64,6 @@ $weight-courant: $regular;
 
 $color-h1: $primary-color;
 $color-h2: $secondary-color;
-$color-h3: $terciary-color;
+$color-h3: $primary-color;
 $color-h4: $black;
 $color-courant: $black;

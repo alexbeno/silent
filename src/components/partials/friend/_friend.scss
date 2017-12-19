@@ -1,0 +1,30 @@
+/**
+* silent 2017
+* [- friend style -]
+*/
+
+@import '../../../assets/sass/app';
+
+.friend__container__svg {
+  width: 88px;
+  height: auto;
+}
+
+.friend__eyesAnime {
+  .eyesG,
+  .eyesR {
+    animation: eyes 0.5s ease;
+  }
+
+  @include keyframes(eyes) {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
