@@ -25,12 +25,11 @@ export default {
       upCircle.to(".home__circle--bottom .home__point--one", 0.5, {opacity: 0, zIndex: 0, ease:Power2.easeInOut}, "-=0.2");
 
       /* CIRCLE DRAWING */
-      upCircle.to(".home__circle--bottom .circle__svg", 2, {strokeDashoffset: "-1500",  ease:Power2.easeInOut});
-      upCircle.to(".home__circle--top .circle__svg", 2, {strokeDashoffset: "0",  ease:Power2.easeInOut}, "-=2");
+      upCircle.to(".home__circle--bottom .circle__svg", 2, {strokeDashoffset: "1500",  ease:Power2.easeInOut});
+      upCircle.to(".home__circle--top .circle__svg", 2, {strokeDashoffset: "0",  ease:Power2.easeInOut}, "-=1.5");
 
-      upCircle.to(".home__circle--bottom .circle__svg", 0, {opacity: "0",  ease:Power2.easeInOut});
-      upCircle.to(".home__circle--bottom .circle__svg", 0, {strokeDashoffset: "1500",  ease:Power2.easeInOut});
-      upCircle.to(".home__circle--bottom .circle__svg", 0, {opacity: "1",  ease:Power2.easeInOut});
+      upCircle.to(".home__circle--bottom .circle__svg", 0, {rotationY: "0",  ease:Power2.easeInOut});
+      upCircle.to(".home__circle--top .circle__svg", 0, {rotationY: "180deg",  ease:Power2.easeInOut});
 
       /* ENTER POINT */
       upCircle.to(".home__circle--top .home__point--three", 0.5, {opacity: 1, zIndex: 2, ease:Power2.easeInOut}, "-=1");
@@ -59,16 +58,15 @@ export default {
       let upCircle = this.upCircle;
 
       /* LEAVE POINT */
-      upCircle.to(".home__circle--top .home__point--notActive.home__point--three", 0.5, {opacity: 0, zIndex: 0, ease:Power2.easeInOut},);
+      upCircle.to(".home__circle--top .home__point--notActive.home__point--three", 0.5, {opacity: 0, zIndex: 0, ease:Power2.easeInOut});
       upCircle.to(".home__circle--top .home__point--notActive.home__point--two", 0.5, {opacity: 0, zIndex: 0, ease:Power2.easeInOut}, "-=0.2");
       upCircle.to(".home__circle--top .home__point--notActive.home__point--one", 0.5, {opacity: 0, zIndex: 0, ease:Power2.easeInOut}, "-=0.2");
 
       /* CIRCLE DRAWING */
-      upCircle.to(".home__circle--top .circle__svg", 2, {strokeDashoffset: "-1500",  ease:Power2.easeInOut});
-      upCircle.to(".home__circle--bottom .circle__svg", 2, {strokeDashoffset: "0",  ease:Power2.easeInOut}, "-=2");
-      upCircle.to(".home__circle--top .circle__svg", 0, {opacity: "0",  ease:Power2.easeInOut});
-      upCircle.to(".home__circle--top .circle__svg", 0, {strokeDashoffset: "1500",  ease:Power2.easeInOut});
-      upCircle.to(".home__circle--top .circle__svg", 0, {opacity: "1",  ease:Power2.easeInOut});
+      upCircle.to(".home__circle--top .circle__svg", 2, {strokeDashoffset: "1500",  ease:Power2.easeInOut});
+      upCircle.to(".home__circle--bottom .circle__svg", 2, {strokeDashoffset: "0",  ease:Power2.easeInOut}, "-=1.5");
+      upCircle.to(".home__circle--top .circle__svg", 0, {rotationY: "0",  ease:Power2.easeInOut});
+      upCircle.to(".home__circle--bottom .circle__svg", 0, {rotationY: "180deg",  ease:Power2.easeInOut});
 
       /* ENTER POINT */
       upCircle.to(".home__circle--bottom .home__point--notActive.home__point--three", 0.5, {opacity: 1, zIndex: 2, ease:Power2.easeInOut}, "-=1");
@@ -100,6 +98,7 @@ export default {
       upCircle.to(".home__circle--top .home__point--three", 0.5, {opacity: 1, zIndex: 2, ease:Power2.easeInOut}, "-= 1");
       upCircle.to(".home__circle--top .home__point--two", 0.5, {opacity: 1, zIndex: 2, ease:Power2.easeInOut}, "-=0.7");
       upCircle.to(".home__circle--top .home__point--one", 0.5, {opacity: 1, zIndex: 2, ease:Power2.easeInOut, onComplete: that.finish = true }, "-=0.3");
+      upCircle.to(".home__circle--top .circle__svg", 0, {rotationY: "180deg",  ease:Power2.easeInOut});
     },
 
     setLevel: function(targetElement) {
