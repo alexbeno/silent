@@ -1,0 +1,16 @@
+/**
+* silent 2017
+* [- oneOne style -]
+*/
+
+@import '../../../assets/sass/app';
+
+.game {
+  opacity: 0;
+  transition: all ease 3s;
+}
+.oneOne {
+  background: #111318;
+  height: 100vh;
+  @include flex();
+}

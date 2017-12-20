@@ -28,32 +28,36 @@
       </div>
       <div class="home__circle home__circle--top">
         <circles></circles>
-        <div class="home__point home__point--notActive home__point--one" v-on:click="clickEventLevel" lvl-one="one-one" lvl-two="one-two" lvl-three="one-three" part-name="Awake in the clearing">
+        <div class="home__point home__point--notActive home__point--one" v-on:click="clickEventLevel" lvl-one="oneOne" lvl-two="oneTwo" lvl-three="oneThree" part-name="Awake in the clearing">
           <div class="home__point__content"></div>
         </div>
-        <div class="home__point home__point--notActive home__point--two" v-on:click="clickEventLevel" lvl-one="two-one" lvl-two="two-two" lvl-three="two-three" part-name="Grosse partie 2">
+        <div class="home__point home__point--notActive home__point--two" v-on:click="clickEventLevel" lvl-one="twoOne" lvl-two="twoTwo" lvl-three="twoThree" part-name="Grosse partie 2">
           <div class="home__point__content"></div>
         </div>
-        <div class="home__point home__point--notActive home__point--three" v-on:click="clickEventLevel" lvl-one="three-one" lvl-two="three-two" lvl-three="three-three" part-name=" Grosse partie 3">
+        <div class="home__point home__point--notActive home__point--three" v-on:click="clickEventLevel" lvl-one="threeOne" lvl-two="threeTwo" lvl-three="threeThree" part-name=" Grosse partie 3">
           <div class="home__point__content"></div>
         </div>
       </div>
       <div class="home__circle home__circle--bottom">
         <circles></circles>
-        <div class="home__point home__point--notActive home__point--three lvlName--three" data-lvl="null">
+        <a href="#" class="home_goToLvl" v-on:click.prevent="goTo">
+          <div class="home__point home__point--notActive home__point--three lvlName--three" data-lvl="null">
+              <div class="home__point__content"></div>
+              <p class="home__point__number home__point__number--three">03</p>
+          </div>
+        </a>
+        <a href="#" class="home_goToLvl" v-on:click.prevent="goTo">
+          <div class="home__point home__point--notActive home__point--two lvlName--two" data-lvl="null">
             <div class="home__point__content"></div>
-            <p class="home__point__number home__point__number--three">03</p>
-        </div>
-        <div class="home__point home__point--notActive home__point--two lvlName--two" data-lvl="null">
-          <div class="home__point__content"></div>
-          <p class="home__point__number home__point__number--two">02</p>
-        </div>
-        <router-link to="/about" >
-        <div class="home__point home__point--one home__point--active lvlName--one" data-lvl="null">
-            <div class="home__point__content"></div>
-            <p class="home__point__number home__point__number--one">01</p>
-        </div>
-        </router-link>
+            <p class="home__point__number home__point__number--two">02</p>
+          </div>
+        </a>
+        <a href="#" class="home_goToLvl" v-on:click.prevent="goTo">
+          <div class="home__point home__point--one home__point--active lvlName--one" data-lvl="null">
+              <div class="home__point__content"></div>
+              <p class="home__point__number home__point__number--one">01</p>
+          </div>
+        </a>
       </div>
     </div>
     <div class="home__noise"></div>

@@ -1,0 +1,79 @@
+/**
+* silent 2017
+* [- ink -]
+*/
+
+@import '../../../assets/sass/app';
+
+.ink {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  user-select: none;
+}
+
+.cd-transition-layer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	visibility: hidden;
+	overflow: hidden;
+
+	.bg-layer {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translateY(-50%) translateX(-2%);
+		height: 100%;
+		width: 2500%;
+		background: url("../../../../static/image/ink.png") no-repeat 0 0;
+		background-size: 100% 100%;
+
+	}
+
+	&.visible {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&.opening .bg-layer {
+		animation: cd-sequence 2s steps(24);
+		animation-fill-mode: forwards;
+	}
+
+	&.closing .bg-layer {
+		animation: cd-sequence-reverse 2s steps(24);
+		animation-fill-mode: forwards;
+	}
+
+	.no-cssanimations & {
+		display: none;
+	}
+}
+
+@include keyframes(cd-sequence) {
+	0% {
+    opacity: 0.2;
+    transform: translateY(-50%) translateX(-2%);
+	}
+	100% {
+    opacity: 1;
+    transform: translateY(-50%) translateX(-98%);
+	}
+}
+
+@include keyframes(cd-sequence-reverse) {
+	0% {
+    transform: translateY(-50%) translateX(-98%);
+    opacity: 1;
+	}
+	100% {
+    transform: translateY(-50%) translateX(-2%);
+    opacity: 1;
+	}
+}

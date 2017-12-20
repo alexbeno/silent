@@ -1,0 +1,141 @@
+/**
+* silent 2017
+* [- globalLvl -]
+*/
+
+@import '../../../assets/sass/app';
+
+
+.globalLvl__top {
+  position: fixed; 
+  top: 65px;
+  left: 0;
+  width: calc(50% + 105px);
+  height: auto;
+  padding-left: 60px; 
+  @include flex($justify: space-between);
+}
+
+.globalLvl__state {
+  @include flex($justify: flex-start);
+}
+
+.globalLvl__stateNumber {
+  font-size: em(14);
+  font-weight: $bold;
+  color: #BCB9B8;
+  letter-spacing: 2px;
+  span {
+    font-size: em(20);
+    color: $white;
+  }
+}
+
+.globalLvl__stateTitle {
+  font-size: em(15);
+  font-weight: $bold;
+  color: #BCB9B8;
+  margin-left: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+.globalLvl__univers {
+  @include flex($direction:column);
+}
+
+.globalLvl__universTitle {
+  font-size: em(30);
+  letter-spacing: 1.50px;
+  line-height: 32px;
+  width: 210px;
+  text-align: center;
+  margin-right: -1.50px;
+}
+
+.globalLvl__universDot {
+  width: 6px;
+  height: 6px;
+  background: $white;
+  border-radius: 50%;
+  box-shadow: 0 0 100px 30px rgba(13,141,144,0.30);
+  margin-bottom: 11px;
+}
+
+.globalLvl__bottom {
+  position: fixed; 
+  bottom: 76px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  padding: 0 60px; 
+  @include flex($align: center, $justify: space-between);
+}
+
+.globalLvl__left {
+  @include flex($justify: flex-start, $align: center);
+}
+
+.globalLvl__containerLink {
+  position: relative;
+  &:hover {
+    .globalLvl__containerHover {
+      width: 169px;
+      transition: all ease 0.5s;
+    }
+  }
+}
+
+.globalLvl__containerHover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  overflow: hidden;
+  margin-top: 0;
+  transition: all ease 0.5s;
+}
+
+.globalLvl__link {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  width: 164px;
+  font-family: $font-courant;
+  font-size: em(14);
+  padding: 15px 20px;
+  border: 1px solid $white;
+  text-decoration: none;
+  box-shadow: 0 0 15px 5px rgba(255,255,255,0.3);
+  border-radius: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @include buttonA();
+}
+
+.globalLvl__link--hover {
+  background: white;
+  color: $black;
+  box-shadow: unset;
+  margin-top: 0;
+}
+
+.globalLvl__playImg {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+  border-radius: 100%;
+  box-shadow: 0 0 8px 1px rgba(255,255,255,0.50);
+}
+
+.globalLvl__soundImg {
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  box-shadow: 0 0 8px 1px rgba(255,255,255,0.50);
+}

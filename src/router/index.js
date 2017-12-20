@@ -3,6 +3,9 @@ import Router from 'vue-router'
 import home from '@/components/home/home'
 import preHome from '@/components/preHome/preHome'
 
+
+import oneOne from '@/components/level/oneOne/oneOne'
+
 Vue.use(Router)
 
 export default new Router({
@@ -17,6 +20,11 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: home
+    },
+    {
+      path: '/oneOne',
+      name: 'oneOne',
+      component: oneOne
     },
   ]
 })

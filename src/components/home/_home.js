@@ -4,6 +4,7 @@
 */
 
 import Vue from 'vue';
+import router from '@/router';
 import friend from '@/components/partials/friend/friend';
 import circles from '@/components/partials/circle/circle';
 import { TweenMax, Power2, TimelineLite } from "gsap";
@@ -150,7 +151,7 @@ export default {
             this.setLevel(element);
             this.reverseCircle();
           }
-        }, 250);
+        }, 100);
       }
     },
 
@@ -240,10 +241,12 @@ export default {
       // [---] event on the mouse position  [---]
       const mouse = { x: 0.5, y: 1 };
       window.addEventListener('mousemove', event => {
-        mouse.x = event.clientX;
-        mouse.y = event.clientY;
-        this.mountainMoving(mouse.x, mouse.y);
-        this.friendMoving(mouse.x, mouse.y);
+        if(router.history.current.name === "home") {
+          mouse.x = event.clientX;
+          mouse.y = event.clientY;
+          this.mountainMoving(mouse.x, mouse.y);
+          this.friendMoving(mouse.x, mouse.y);
+        }
       });
     },
 
@@ -283,9 +286,43 @@ export default {
       setTimeout(() => {
         container.style.display = "none ";
       }, 500);
+    },
+
+    goTo: function(event) {
+      let element = event.target;
+      let ink = document.querySelector('.cd-transition-layer');
+      let home = document.querySelector('.home');
+
+      if(!event.target.classList.contains('home__point')) {
+        element = element.parentElement;
+      }
+      let link = element.getAttribute('data-lvl');
+
+      ink.classList.add('visible');
+      ink.classList.remove('closing');
+      ink.classList.add('opening');
+
+      home.style.opacity ="0";
+
+      setTimeout(() => {
+        router.push({ path: '/' + link });
+      }, 2000);
+      return;
     }
   },
+
   mounted: function() {
+    let ink = document.querySelector('.cd-transition-layer');
+    let home = document.querySelector('.home');
+
+    ink.classList.add('closing');
+
+    setTimeout(() => {
+    ink.classList.remove('visible');
+    ink.classList.remove('opening');
+    home.style.opacity = "1";
+    }, 2000);
+
     this.upCircle = new TimelineMax;
     this.finish = false;
     setTimeout(() => {

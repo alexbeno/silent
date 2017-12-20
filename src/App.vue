@@ -1,12 +1,17 @@
 <template>
   <div id="app">
     <router-view/>
+    <ink></ink>
   </div>
 </template>
 
 <script>
+import ink from '@/components/partials/ink/ink';
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    ink,
+  },
 }
 </script>
 
