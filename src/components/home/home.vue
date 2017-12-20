@@ -16,6 +16,7 @@
     <div class="home__bottomBar"></div>
     <div class="home__friend">
       <friend></friend>
+      <a href="#" class="homeFriend__button" v-on:click.prevent="notif()"><img class="homeFriend__bullet" src="/static/image/home/bullet.svg"/></a>
     </div>
     <div class="home__navigation">
       <div class="home__title">
@@ -56,6 +57,15 @@
       </div>
     </div>
     <div class="home__noise"></div>
+    <div class="home__tutorial">
+      <p class="homeTutorial__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+      <div class="homeTutorial__containerLink">
+        <a href="#" class="homeTutorial__link" v-on:click.prevent="closeNotif()" data-title="J’ai compris">J’ai compris</a>
+        <div class="homeTutorial__containerHover">
+          <a href="#" class="homeTutorial__link homeTutorial__link--hover" v-on:click.prevent="closeNotif()" data-title="J’ai compris">J’ai compris</a>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

@@ -1,0 +1,84 @@
+/**
+* silent 2017
+* [- pre home style -]
+*/
+
+@import '../../assets/sass/app';
+
+.preHome {
+  background: #111318;
+  height: 100vh;
+  @include flex();
+}
+
+.preHome__explain {
+  width: 720px;
+  text-align: center;
+  line-height: 40px;
+  font-size: em(30px);
+  letter-spacing: 1.4px;
+}
+
+.preHomeDrag {
+  position: fixed;
+  bottom: 100px;
+  left: 0;
+  width: 100%;
+  @include flex($direction: column);
+}
+
+.preHomeDrag__dragLine {
+  @include flex();
+  position: relative;
+}
+
+.preHomeDrag__dragLine__line {
+  width: 200px;
+  height: 1px;
+  background: #404246;
+}
+
+.preHomeDrag__dragLine__point {
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  background: #404246;
+}
+
+.preHomeDrag__dragLine__point--drag {
+  position: absolute;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background: #FFFFFF;
+  box-shadow: 0 0 100px 30px rgba(13,141,144,0.5);
+}
+
+.preHomeDrag__headPhone {
+  @include flex($direction: column);
+}
+
+.preHomeDrag__headPhone__contain {
+  width: 50px;
+  height: 50px;
+  border: 1px solid $white;
+  border-radius: 100%;
+  @include flex();
+  opacity: 0.7;
+  margin-top: 100px;
+}
+
+.preHomeDrag__headPhone__svg {
+  width: 19px;
+}
+
+.preHomeDrag__headPhone__text {
+  margin-top: 19px;
+  font-size: em(14);
+  opacity: 0.5;
+  width: 215px;
+  text-align: center;
+  font-weight: $medium;
+  line-height: 17px;
+}

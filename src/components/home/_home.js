@@ -97,8 +97,12 @@ export default {
       upCircle.to(".home__circle--top .circle__svg", 2, {strokeDashoffset: "0",  ease:Power2.easeInOut});
       upCircle.to(".home__circle--top .home__point--three", 0.5, {opacity: 1, zIndex: 2, ease:Power2.easeInOut}, "-= 1");
       upCircle.to(".home__circle--top .home__point--two", 0.5, {opacity: 1, zIndex: 2, ease:Power2.easeInOut}, "-=0.7");
-      upCircle.to(".home__circle--top .home__point--one", 0.5, {opacity: 1, zIndex: 2, ease:Power2.easeInOut, onComplete: that.finish = true }, "-=0.3");
+      upCircle.to(".home__circle--top .home__point--one", 0.5, {opacity: 1, zIndex: 2, ease:Power2.easeInOut, onComplete: that.updateFinish() }, "-=0.3");
       upCircle.to(".home__circle--top .circle__svg", 0, {rotationY: "180deg",  ease:Power2.easeInOut});
+    },
+
+    updateFinish: function() {
+      this.finish = true
     },
 
     setLevel: function(targetElement) {
@@ -124,9 +128,13 @@ export default {
     },
 
     clickEventLevel: function(event) {
-      if(event.target.classList.contains('home__point--active')) {
+      let element = event.target;
+      if(element.classList.contains('home__point__content')) {
+        element = element.parentElement;
+      }
+      if(element.classList.contains('home__point--active')) {
         this.reverseCircle();
-        this.setLevel(event.target);
+        this.setLevel(element);
       }
       else {
         let activeItem = document.querySelector('.home__point--active');
@@ -135,11 +143,11 @@ export default {
           activeItem.classList.remove('home__point--active');
         }
 
-        event.target.classList.remove('home__point--notActive');
-        event.target.classList.add('home__point--active');
+        element.classList.remove('home__point--notActive');
+        element.classList.add('home__point--active');
         setTimeout(() => {
           if(this.finish === true) {
-            this.setLevel(event.target);
+            this.setLevel(element);
             this.reverseCircle();
           }
         }, 250);
@@ -245,6 +253,7 @@ export default {
       this.drawCircle();
       this.revert();
     },
+
     friendEyes: function() {
       let friend = document.querySelector('.friend__container__svg');
       setInterval(() => {
@@ -253,6 +262,27 @@ export default {
           friend.classList.add('friend__eyesAnime')
         }, 100);
       }, 2000);
+    },
+
+    notif: function() {
+      let container = document.querySelector('.home__tutorial');
+      let buble = document.querySelector('.homeFriend__button');
+
+      buble.style.opacity = "0"
+      container.style.display = "flex";
+      setTimeout(() => {
+        container.classList.add('home__tutorial--active');
+      }, 100);
+    },
+    closeNotif: function() {
+      let container = document.querySelector('.home__tutorial');
+      let buble = document.querySelector('.homeFriend__button');
+
+      buble.style.opacity = "1"
+      container.classList.remove('home__tutorial--active');
+      setTimeout(() => {
+        container.style.display = "none ";
+      }, 500);
     }
   },
   mounted: function() {

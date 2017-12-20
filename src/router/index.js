@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/home/home'
-import about from '@/components/about/about'
+import preHome from '@/components/preHome/preHome'
 
 Vue.use(Router)
 
@@ -10,13 +10,13 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'preHome',
+      component: preHome
+    },
+    {
+      path: '/home',
       name: 'home',
       component: home
     },
-    {
-      path: '/about',
-      name: 'about',
-      component: about
-    }
   ]
 })
