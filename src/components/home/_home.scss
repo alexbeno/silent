@@ -9,7 +9,8 @@
   width: 100%;
   height: 100vh;
   background: $black;
-  transition: all ease 3s;
+  transition: all ease 1s;
+  opacity: 0;
   @include flex();
 }
 
@@ -184,6 +185,19 @@
   opacity: 0;
   user-select: none;
   will-change: auto;
+
+  /deep/
+  .text-word {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    margin-right: 0.3rem;
+  }
+
+  .text-word__inner {
+      display: inline-block;
+      width: 100%;
+  }
 }
 
 .homeLvl__txt {
@@ -376,14 +390,23 @@
   background: rgba($black, 0.85);
   z-index: 10;
   display: none;
-  opacity: 0;
-  transition: all ease 0.5s;
-}
-
-.home__tutorial--active {
   opacity: 1;
   transition: all ease 0.5s;
+
+  /deep/
+  .text-word {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    margin-right: 0.6rem;
+  }
+
+  .text-word__inner {
+      display: inline-block;
+      width: 100%;
+  }
 }
+
 
 .homeTutorial__text {
   font-family: $font-title;
