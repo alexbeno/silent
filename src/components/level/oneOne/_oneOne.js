@@ -36,7 +36,7 @@ export default {
       // const life = document.querySelector(".life")
       // const lifeTotal = document.querySelector(".lifeTotal")
       //nombre de colonne, nombre de ligne, canvas, canvasFinal, tuto ou pas, nombre de vie
-      const grid = new Grid(6,3, canvas, canvasFinal, false, 3, allSoundGame)
+      const grid = new Grid(6,3, canvas, canvasFinal, false, 2, allSoundGame)
       grid.init()
       grid.draw()
       //#ALEX

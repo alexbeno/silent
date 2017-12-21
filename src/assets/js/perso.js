@@ -26,8 +26,8 @@ class Perso {
   }
 
   drawPerso() {
-    console.log(this.grid)
-    //this.grid.drawFinal();
+    this.grid.draw()
+    //this.grid.drawLevel()
     // drawFinal
     // arctan(y / x)
     // let adjacentX = grid.points[this.newPosX][this.newPosY].x - grid.points[this.posX][this.posY].x;
@@ -41,8 +41,6 @@ class Perso {
       let y = this.grid.points[this.posX][this.posY].y + this.incY * this.currentAnimeFrame - this.floatingPerso;
       this.context.drawImage(this.personage, x, y, this.personageWidth, this.personageHeight);
     } else if (((this.incX * this.currentAnimeFrame) <= this.grid.points[this.posX][this.posY].x) && (this.begin <= 1)){
-      console.log(this.incX* this.currentAnimeFrame)
-      console.log(this.grid.points[this.posX][this.posY].x)
       this.context.clearRect(0, 0, this.grid.canvasFinal.width, this.grid.canvasFinal.height)
 
       let x = this.incX * this.currentAnimeFrame - this.floatingPerso / 4;
@@ -55,6 +53,10 @@ class Perso {
       let x = this.grid.points[this.posX][this.posY].x + this.floatingPerso / 4;
       let y = this.grid.points[this.posX][this.posY].y + this.incY * this.currentAnimeFrame - this.floatingPerso;
       this.context.drawImage(this.personage, x, y, this.personageWidth, this.personageHeight);
+    }
+    this.grid.drawLevel()
+    if(this.begin > 1){
+      this.grid.drawFinal()
     }
   }
 
@@ -78,10 +80,6 @@ class Perso {
       this.incY = (this.grid.canvasFinal.height - this.grid.points[this.posX][this.posY].y) / this.numFrame;
       this.incX = 0;
     }
-    console.log("posX : " + this.posX);
-    console.log("incX : " + this.incX);
-    console.log("incY : " + this.incY);
-    
   }
 
   movePerso() {
@@ -104,9 +102,6 @@ class Perso {
       currentY = this.grid.points[this.posX][this.posY].y + (this.currentAnimeFrame * this.incY);
       currentX = this.grid.points[this.posX][this.posY].x + (this.currentAnimeFrame * this.incX);      
     }
-
-    console.log(this.posX)
-    console.log(this.posY)
     let boolX = false;
     let boolY = true;
     if (this.newPosY < 5  ) {
@@ -118,6 +113,7 @@ class Perso {
   }
 
   nextStep() {
+    console.log(this.path)
     if (this.begin <= 1) {
       this.currentStep = 0;
       this.begin++;

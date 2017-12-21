@@ -41,7 +41,7 @@ class Line {
         this.startY = startY
 
         this.grid = grid
-
+        this.last
         this.progressX = startX
         this.progressY = startY
         this.goalX = goalX
@@ -60,7 +60,7 @@ class Line {
         if(this.goalX-this.progressX == 0){
             this.velocityX = 10
         }
-        if( this.progressX !== this.goalX){
+        if( this.progressX+this.velocityX < this.goalX){
             this.grid.context.beginPath()
             this.grid.context.moveTo(this.progressX, this.progressY)
             this.progressX += this.velocityX
@@ -74,7 +74,20 @@ class Line {
             this.grid.context.shadowOffsetY = 0       // Décalage en Y
             this.grid.context.stroke()
         }  else {
+            this.grid.context.moveTo(this.progressX, this.progressY)
+            this.grid.context.lineTo(this.goalX, this.goalY, 6)
+            this.grid.context.strokeStyle = '#42d1f4'
+            this.grid.context.shadowColor   = '#42d1f4'   // Couleur de l'ombre
+            this.grid.context.shadowBlur    = 20       // Largeur du flou
+            this.grid.context.shadowOffsetX = 0        // Décalage en X
+            this.grid.context.shadowOffsetY = 0       // Décalage en Y
+            this.grid.context.stroke()
+
             cancelAnimationFrame(this.animation)
+            if(this.last == 'last'){
+                this.grid.validating = 'not'
+                this.last = 'not'
+            }
         }          
     }
     drawBeginStart(){
@@ -92,6 +105,8 @@ class Line {
         }            
     }
     autoDraw(){
+        this.grid.validating = 'validating'
+
         this.animation = requestAnimationFrame(() => this.autoDraw());
         this.draw()
     }  
@@ -101,13 +116,13 @@ class Grid {
     constructor(numberColumn, numberLine, canvas, canvasFinal, tuto, numberTry, allSoundGame) {
         this.numberColumn = numberColumn +1
         this.numberLine = numberLine 
-
+        this.validating = 'not'
         this.points = new Array(numberColumn)
         this.lines = new Array()
         this.combinaison = new Array(numberColumn)
         this.playerCombinaison = new Array(numberColumn)
 
-        this.spaceLine = 100
+        this.spaceLine = 80
         if(this.numberLine == '3'){
             this.spaceLine = this.spaceLine*2
         }
@@ -128,10 +143,10 @@ class Grid {
 
 
         this.tuto = tuto
-        this.offsetY = (window.innerHeight - ((this.numberLine-1)*this.spaceLine + 2*2))*0.72
+        this.offsetY = (window.innerHeight - ((this.numberLine-1)*this.spaceLine + 2*2))*0.60
         this.offsetX = window.innerWidth*0.20
 
-        this.spaceColumn = (1.8*this.offsetX-window.innerWidth-2*2)/(-this.numberColumn+1)
+        this.spaceColumn = (2*this.offsetX-window.innerWidth-2*2)/(-this.numberColumn+1)
 
     }
 
@@ -195,6 +210,14 @@ class Grid {
                         this.context.shadowOffsetX = 0;        // Décalage en X
                         this.context.shadowOffsetY = 0;       // Décalage en Y
                         this.context.fill()
+                        this.context.shadowBlur    = 50;       // Largeur du flou
+                        this.context.shadowOffsetX = 0;        // Décalage en X
+                        this.context.shadowOffsetY = 0;       // Décalage en Y
+                        this.context.fill()
+                        this.context.shadowBlur    = 60;       // Largeur du flou
+                        this.context.shadowOffsetX = 0;        // Décalage en X
+                        this.context.shadowOffsetY = 0;       // Décalage en Y
+                        this.context.fill()
                         this.context.shadowBlur    = 30;       // Largeur du flou
                         this.context.shadowOffsetX = 0;        // Décalage en X
                         this.context.shadowOffsetY = 0;       // Décalage en Y
@@ -214,12 +237,28 @@ class Grid {
                         break;
                       case 'selected':
                         this.context.fillStyle = 'white';
-                        this.context.shadowColor   = '#42d1f4';   // Couleur de l'ombre
+                        this.context.shadowColor   = '#white';   // Couleur de l'ombre
                         this.context.shadowBlur    = 60;       // Largeur du flou
                         this.context.shadowOffsetX = 0;        // Décalage en X
                         this.context.shadowOffsetY = 0;       // Décalage en Y
                         this.context.fill()
                         this.context.shadowBlur    = 75;       // Largeur du flou
+                        this.context.shadowOffsetX = 0;        // Décalage en X
+                        this.context.shadowOffsetY = 0;       // Décalage en Y
+                        this.context.fill()
+                        this.context.shadowBlur    = 130;       // Largeur du flou
+                        this.context.shadowOffsetX = 0;        // Décalage en X
+                        this.context.shadowOffsetY = 0;       // Décalage en Y
+                        this.context.fill()
+                        this.context.shadowBlur    = 150;       // Largeur du flou
+                        this.context.shadowOffsetX = 0;        // Décalage en X
+                        this.context.shadowOffsetY = 0;       // Décalage en Y
+                        this.context.fill()
+                        this.context.shadowBlur    = 100;       // Largeur du flou
+                        this.context.shadowOffsetX = 0;        // Décalage en X
+                        this.context.shadowOffsetY = 0;       // Décalage en Y
+                        this.context.fill()
+                        this.context.shadowBlur    = 90;       // Largeur du flou
                         this.context.shadowOffsetX = 0;        // Décalage en X
                         this.context.shadowOffsetY = 0;       // Décalage en Y
                         this.context.fill()
@@ -231,7 +270,55 @@ class Grid {
                         this.context.shadowOffsetX = 0;        // Décalage en X
                         this.context.shadowOffsetY = 0;       // Décalage en Y
                         this.context.fill()
+                        this.context.shadowBlur    = 25;       // Largeur du flou
+                        this.context.shadowOffsetX = 0;        // Décalage en X
+                        this.context.shadowOffsetY = 0;       // Décalage en Y
+                        this.context.fill()
+                        this.context.shadowBlur    = 25;       // Largeur du flou
+                        this.context.shadowOffsetX = 0;        // Décalage en X
+                        this.context.shadowOffsetY = 0;       // Décalage en Y
+                        this.context.fill()
+                        this.context.shadowBlur    = 20;       // Largeur du flou
+                        this.context.shadowOffsetX = 0;        // Décalage en X
+                        this.context.shadowOffsetY = 0;       // Décalage en Y
+                        this.context.fill()
+                        this.context.shadowBlur    = 60;       // Largeur du flou
+                        this.context.shadowOffsetX = 0;        // Décalage en X
+                        this.context.shadowOffsetY = 0;       // Décalage en Y
+                        this.context.fill()
+                        this.context.shadowBlur    = 75;       // Largeur du flou
+                        this.context.shadowOffsetX = 0;        // Décalage en X
+                        this.context.shadowOffsetY = 0;       // Décalage en Y
+                        this.context.fill()
+                        this.context.shadowBlur    = 130;       // Largeur du flou
+                        this.context.shadowOffsetX = 0;        // Décalage en X
+                        this.context.shadowOffsetY = 0;       // Décalage en Y
+                        this.context.fill()
+                        this.context.shadowBlur    = 150;       // Largeur du flou
+                        this.context.shadowOffsetX = 0;        // Décalage en X
+                        this.context.shadowOffsetY = 0;       // Décalage en Y
+                        this.context.fill()
+                        this.context.shadowBlur    = 100;       // Largeur du flou
+                        this.context.shadowOffsetX = 0;        // Décalage en X
+                        this.context.shadowOffsetY = 0;       // Décalage en Y
+                        this.context.fill()
+                        this.context.shadowBlur    = 90;       // Largeur du flou
+                        this.context.shadowOffsetX = 0;        // Décalage en X
+                        this.context.shadowOffsetY = 0;       // Décalage en Y
+                        this.context.fill()
+                        this.context.shadowBlur    = 40;       // Largeur du flou
+                        this.context.shadowOffsetX = 0;        // Décalage en X
+                        this.context.shadowOffsetY = 0;       // Décalage en Y
+                        this.context.fill()
                         this.context.shadowBlur    = 30;       // Largeur du flou
+                        this.context.shadowOffsetX = 0;        // Décalage en X
+                        this.context.shadowOffsetY = 0;       // Décalage en Y
+                        this.context.fill()
+                        this.context.shadowBlur    = 25;       // Largeur du flou
+                        this.context.shadowOffsetX = 0;        // Décalage en X
+                        this.context.shadowOffsetY = 0;       // Décalage en Y
+                        this.context.fill()
+                        this.context.shadowBlur    = 25;       // Largeur du flou
                         this.context.shadowOffsetX = 0;        // Décalage en X
                         this.context.shadowOffsetY = 0;       // Décalage en Y
                         this.context.fill()
@@ -293,8 +380,8 @@ class Grid {
                         this.context.fill()
                         break;
                       case 'wrong':
-                        this.context.fillStyle = 'red';
-                        this.context.shadowColor   = '#fff';   // Couleur de l'ombre
+                        this.context.fillStyle = 'white';
+                        this.context.shadowColor   = '#fcc9e1';   // Couleur de l'ombre
                         this.context.shadowBlur    = 60;       // Largeur du flou
                         this.context.shadowOffsetX = 0;        // Décalage en X
                         this.context.shadowOffsetY = 0;       // Décalage en Y
@@ -402,42 +489,113 @@ class Grid {
         //         }
         //     }, timer*i)
         // }
+        
+        this.validating = 'validating'
         this.lines = new Array()
+        this.line = 0
         //this.draw()
         for( let i = 1; i<this.numberColumn; i++ ){
             let timer = 800
+
             setTimeout(()=> {
                 let _point = this.points[i][this.playerCombinaison[i]]
                 let _pointPrev = this.points[i-1][this.playerCombinaison[i-1]]
-                // console.log(_point)
-                //this.playASong(this.combinaison[i])
+                this.playASong(this.combinaison[i])
 
                 if(_point.state == 'find' && _pointPrev.state == 'find'){
                     //console.log('Line')
                     let line = new Line(_pointPrev.x, _pointPrev.y, _point.x, _point.y, this)
                     this.lines.push(line)
                     line.autoDraw()
+                    if(i == this.numberColumn-1){
+                        line.last = 'last'
+                        console.log('last')
+                    }else {
+                        line.last = 'not'
+                    }
                 } else {
+                    if(i == this.numberColumn-1){
+                        this.validating = 'not'
+                        console.log('heeyyy')
+                    }
                     if(i == this.numberColumn-1  && _point.state == 'find'){
                         this.context.beginPath()
                         this.context.arc( _point.x, _point.y, _point.rayon, 0, Math.PI*2 )    
-                        this.context.fillStyle = 'green'
+                        this.context.fillStyle = 'white'
                         this.context.fill() 
                     } else {
-                        this.context.beginPath()
-                        this.context.arc( _point.x, _point.y, _point.rayon, 0, Math.PI*2 )    
-                        this.context.fillStyle = 'red'
-                        this.context.fill()                         
+                        if(_point.state == 'find'){
+                            this.context.beginPath()
+                            this.context.arc( _point.x, _point.y, _point.rayon, 0, Math.PI*2 )    
+                            this.context.fillStyle = 'white'
+                            
+                            this.context.shadowColor   = '#42d1f4';   // Couleur de l'ombre
+                            this.context.shadowBlur    = 40;       // Largeur du flou
+                            this.context.shadowOffsetX = 0;        // Décalage en X
+                            this.context.shadowOffsetY = 0;       // Décalage en Y
+                            this.context.fill()
+                            this.context.shadowBlur    = 50;       // Largeur du flou
+                            this.context.shadowOffsetX = 0;        // Décalage en X
+                            this.context.shadowOffsetY = 0;       // Décalage en Y
+                            this.context.fill() 
+                            this.context.shadowBlur    = 60;       // Largeur du flou
+                            this.context.shadowOffsetX = 0;        // Décalage en X
+                            this.context.shadowOffsetY = 0;       // Décalage en Y
+                            this.context.fill()
+                            this.context.shadowBlur    = 70;       // Largeur du flou
+                            this.context.shadowOffsetX = 0;        // Décalage en X
+                            this.context.shadowOffsetY = 0;       // Décalage en Y
+                            this.context.fill()
+                            this.context.shadowBlur    = 20;       // Largeur du flou
+                            this.context.shadowOffsetX = 0;        // Décalage en X
+                            this.context.shadowOffsetY = 0;       // Décalage en Y
+                            this.context.fill() 
+                            this.context.shadowBlur    = 20;       // Largeur du flou
+                            this.context.shadowOffsetX = 0;        // Décalage en X
+                            this.context.shadowOffsetY = 0;       // Décalage en Y
+                            this.context.fill()
+                            this.context.fill()                             
+                        } else {
+                            this.context.beginPath()
+                            this.context.arc( _point.x, _point.y, _point.rayon, 0, Math.PI*2 )    
+                            this.context.fillStyle = 'white'
+                            this.context.shadowColor   = 'red';   // Couleur de l'ombre
+                            this.context.shadowBlur    = 40;       // Largeur du flou
+                            this.context.shadowOffsetX = 0;        // Décalage en X
+                            this.context.shadowOffsetY = 0;       // Décalage en Y
+                            this.context.fill()
+                            this.context.shadowBlur    = 50;       // Largeur du flou
+                            this.context.shadowOffsetX = 0;        // Décalage en X
+                            this.context.shadowOffsetY = 0;       // Décalage en Y
+                            this.context.fill() 
+                            this.context.shadowBlur    = 60;       // Largeur du flou
+                            this.context.shadowOffsetX = 0;        // Décalage en X
+                            this.context.shadowOffsetY = 0;       // Décalage en Y
+                            this.context.fill()
+                            this.context.shadowBlur    = 70;       // Largeur du flou
+                            this.context.shadowOffsetX = 0;        // Décalage en X
+                            this.context.shadowOffsetY = 0;       // Décalage en Y
+                            this.context.fill()
+                            this.context.shadowBlur    = 20;       // Largeur du flou
+                            this.context.shadowOffsetX = 0;        // Décalage en X
+                            this.context.shadowOffsetY = 0;       // Décalage en Y
+                            this.context.fill() 
+                            this.context.shadowBlur    = 20;       // Largeur du flou
+                            this.context.shadowOffsetX = 0;        // Décalage en X
+                            this.context.shadowOffsetY = 0;       // Décalage en Y
+                            this.context.fill()                                  
+                        }
+                       
                     }
                
                 }
             }, timer*i)
         }
-        this.validation = false
     }
 
     mousemoveInteraction(e){
-        //if(!this.validation){
+        console.log(this.validating)
+        if(this.validating == 'not'){
             this.draw()
             this.mouseX = e.offsetX
             this.mouseY = e.offsetY
@@ -489,7 +647,7 @@ class Grid {
             if(this.selectedPoint) {
                 this.drawPath(this.closerPoint, this.mouseX, this.mouseY)
             }
-        //}
+        }
     }
 
     selectPoints(e){
@@ -531,9 +689,20 @@ class Grid {
         this.perso.nextStep()
         return this.combinaison ;
     }
+
+    drawLevel(){
+        this.contextFinal.beginPath()
+        this.contextFinal.moveTo(0, this.points[0][this.startingPoint].y)
+        this.contextFinal.lineTo(this.points[0][this.startingPoint].x, this.points[0][this.startingPoint].y)
+        this.contextFinal.lineTo(this.points[0][this.startingPoint].x, this.canvasFinal.height)
+        this.contextFinal.lineTo(0, this.canvasFinal.height)
+        this.contextFinal.lineTo(0, this.points[0][this.startingPoint].y)
+        this.contextFinal.fillStyle = 'black'
+        this.contextFinal.fill()     
+    }
+
     drawFinal(){
-        console.log('oki')
-        //this.draw()
+        this.drawLevel()
         let startIndex = 0
         let pointStart = this.points[0][this.playerCombinaison[0]]
         this.contextFinal.beginPath()
@@ -550,46 +719,24 @@ class Grid {
                 this.contextFinal.lineTo(_point.x, this.canvasFinal.height)
                 this.contextFinal.lineTo(_pointPrev.x, this.canvasFinal.height)
                 this.contextFinal.lineTo(_pointPrev.x, _pointPrev.y)
-                this.contextFinal.fillStyle = 'red'
+                this.contextFinal.fillStyle = 'black'
                 this.contextFinal.fill()
-                // this.contextFinal.moveTo(10, 10)
-                // this.contextFinal.lineTo(100, 100)
 
-            } else {
-                // if(i == this.numberColumn-1  && _point.state == 'find'){
-                //     this.contextFinal.beginPath()
-                //     this.contextFinal.arc( _point.x, _point.y, _point.rayon, 0, Math.PI*2 )    
-                //     this.contextFinal.fillStyle = 'green'
-                //     this.contextFinal.fill() 
-                // } else {
-                    this.contextFinal.beginPath()
-                    this.contextFinal.moveTo(_pointPrev.x, _pointPrev.y)
-                    this.contextFinal.lineTo(_pointPrev.x, this.canvasFinal.height)
-                    this.contextFinal.lineTo(pointStart.x, this.canvasFinal.height)
-                    this.contextFinal.lineTo(pointStart.x, pointStart.y)
-                    this.contextFinal.fillStyle = 'red'
-                    this.contextFinal.fill()
-                    i++ 
-                    pointStart = this.points[i][this.playerCombinaison[i]] 
-
-                // }
-           
             }
         }
         let pointLast = this.points[this.numberColumn-1][this.playerCombinaison[this.numberColumn-1]]
-        this.contextFinal.moveTo(pointLast.x, pointLast.y)
-
-        this.contextFinal.lineTo(pointLast.x, this.canvasFinal.height)
-        this.contextFinal.lineTo(pointStart.x, this.canvasFinal.height)
-        this.contextFinal.lineTo(pointStart.x, pointStart.y)
-        this.contextFinal.fillStyle = 'red'
-        this.contextFinal.fill()
+        // this.contextFinal.moveTo(pointLast.x, pointLast.y)
+        // this.contextFinal.lineTo(pointLast.x, this.canvasFinal.height)
+        // this.contextFinal.lineTo(this.canvasFinal.width, this.canvasFinal.height)
+        // this.contextFinal.lineTo(pointStart.x, pointStart.y)
+        // this.contextFinal.fillStyle = 'red'
+        // this.contextFinal.fill()
         this.contextFinal.moveTo(pointLast.x, pointLast.y)
         this.contextFinal.lineTo(this.canvasFinal.width, pointLast.y)
         this.contextFinal.lineTo(this.canvasFinal.width, this.canvasFinal.height)
-        this.contextFinal.lineTo(pointStart.x, this.canvasFinal.height)
-        this.contextFinal.lineTo(pointStart.x, pointStart.y)
-        this.contextFinal.fillStyle = 'red'
+        this.contextFinal.lineTo(pointLast.x, this.canvasFinal.height)
+        this.contextFinal.lineTo(pointLast.x, pointLast.y)
+        this.contextFinal.fillStyle = 'black'
         this.contextFinal.fill()        
     }
     checkValidation(){
@@ -625,20 +772,33 @@ class Grid {
                     this.success = true
                 }
             } else {
+                this.checkCombinaison = new Array()
+                for(let i =0; i<this.combinaison.length; i++){
+                    let _point = this.combinaison[i]
+                    let state = this.points[i][_point].state
+                    if(state == false){
+                        this.checkCombinaison[i] = 5
+                        this.perso.win = false
+                    } else {
+                        this.checkCombinaison[i] = this.combinaison[i]
+                    }
+                }
+                //console.
+                this.perso.path = this.checkCombinaison
                 if(numberRight == this.numberColumn){
                     console.log('plus d\'essai bonne combi')
                     //validation final
                     this.drawValidation()
-                    this.drawFinal()
                     this.perso.nextStep()
+                    this.drawFinal()
 
                     this.success = true
                 } else {
                     console.log('plus d\'essai maauvaise combi')
                     //validation final
                     this.drawValidation()
-                    this.drawFinal()
                     this.perso.nextStep()
+                    this.drawFinal()
 
 
                 }
