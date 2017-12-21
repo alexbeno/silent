@@ -10,6 +10,7 @@
   position: fixed;
   bottom: 76px;
   right: 60px;
+  z-index: 30;
 }
 
 .header__soundImg {
@@ -27,4 +28,5 @@
   font-family: $font-title;
   color: $white;
   text-decoration: none;
+  z-index: 30;
 }

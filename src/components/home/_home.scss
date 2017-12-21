@@ -176,8 +176,21 @@
   }
 }
 
+.homeTitle__txt {
+  @include xlarge() {
+    font-size: em(30);
+    letter-spacing: 20px;
+    margin-right: -20px;
+  }
+}
+
 .homeTitle__explain {
   max-width: 500px;
+  @include xlarge() {
+    font-size: 19px;
+    width: 350px;
+    line-height: 22px;
+  }
 }
 
 
@@ -223,6 +236,9 @@
   left: 0;
   @include flex();
   will-change: auto;
+  @include xlarge() {
+    width: 360px;
+  }
 }
 
 .home__circle--bottom {

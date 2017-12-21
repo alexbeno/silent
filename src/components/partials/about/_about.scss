@@ -34,6 +34,11 @@
   span {
     color: $white;
   }
+  @include xlarge() {
+    font-size: em(20);
+    line-height: 40px;
+    width: 67%;
+  }
 }
 
 .about__universDot {
@@ -51,6 +56,9 @@
   line-height: 50px;
   font-family: $font-title;
   margin-bottom: 53px;
+  @include xlarge() {
+    font-size: em(30);
+  }
 }
 
 .about__contributorName {
