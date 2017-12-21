@@ -23,3 +23,19 @@
   height: auto;
   z-index: -1;
 }
+
+canvas {
+  position: fixed;
+}
+
+.clear {
+  color: white;
+  position: fixed;
+  top: 100px;
+  right: 50px;
+  cursor: pointer;
+}
+
+.globalLvl__bottom {
+  z-index: 1000
+}
