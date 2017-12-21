@@ -260,6 +260,7 @@ export default {
       const timeline = new TimelineLite()
       const $container = document.querySelector('.home__tutorial')
       const buble = document.querySelector('.homeFriend__button')
+      const link = document.querySelector('.homeTutorial__containerLink')
 
       timeline
         .from($container, 0.6, {
@@ -271,7 +272,11 @@ export default {
           opacity: 0,
           ease: Power3.easeOut
         }, 0.008, '#start +=0.2')
-
+        .from(link, 1.4, {
+          y: 100,
+          opacity: 0,
+          ease: Power3.easeOut
+        }, '#start +=0.4')
 
       buble.style.opacity = "0"
       $container.style.display = "flex";
@@ -280,7 +285,7 @@ export default {
       let container = document.querySelector('.home__tutorial');
       let buble = document.querySelector('.homeFriend__button');
 
-      buble.style.opacity = "1"
+      buble.style.display ="none";
 
       TweenMax.to(container, 0.9, {
         opacity: 0,
@@ -319,16 +324,14 @@ export default {
         // Only fade if past the fade out point or not at zero already
         if ((sound.currentTime >= fadePoint) && (sound.volume > 0.1)) {
             sound.volume -= 0.1;
-            console.log('yoA')
         }
         // When volume at zero stop all the intervalling
         if (sound.volume <= 0.1) {
             sound.pause();
             sound.currentTime = 0;
-            console.log('yo')
             clearInterval(fadeAudio);
         }
-      }, 50);
+      }, 10);
     },
 
     soundButton: function() {

@@ -106,10 +106,13 @@
 }
 
 .homeFriend__button {
+  height: auto;
+  width: 50px;
+  display: block;
   transform: translateX(-50px);
   transition: all ease 0.5s;
   will-change: auto;
-  animation: ring 4s .7s ease-in-out infinite;
+  animation: ring 3s ease-in-out infinite;
   @include keyframes(ring) {
     0% { transform: translateX(-50px) rotate(0); }
     1% { transform: translateX(-50px) rotate(30deg); }
@@ -133,9 +136,13 @@
     37% { transform: translateX(-50px) rotate(2deg); }
     39% { transform: translateX(-50px) rotate(-1deg); }
     41% { transform: translateX(-50px) rotate(1deg); }
-    43% { transform: translateX(-50px) rotate(0); }
     100% { transform: translateX(-50px) rotate(0); }
   }
+}
+
+.homeFriend__bullet {
+  width: 100%;
+  height: auto;
 }
 
 .home__navigation {
