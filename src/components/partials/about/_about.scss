@@ -1,0 +1,100 @@
+/**
+* silent 2017
+* [- about style -]
+*/
+
+@import '../../../assets/sass/app';
+
+.about {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  background: $black;
+  @include flex($direction:column, $align: flex-start, $justify: center)
+  padding-left: 110px;
+  opacity: 0;
+  display: none;
+  transition: all ease 0.3s;
+}
+
+.about__explainContainer {
+  margin-bottom: 80px;
+}
+
+.about__explain {
+  font-size: em(30);
+  color: #88898B;
+  width: 57%;
+  letter-spacing: 1.43px;
+  line-height: 50px;
+  font-family: $font-title;
+  span {
+    color: $white;
+  }
+}
+
+.about__universDot {
+  width: 10px;
+  height: 10px;
+  background: $white;
+  border-radius: 50%;
+  box-shadow: 0 0 80px 30px rgba(13,141,144,0.30);
+  margin-bottom: 35px;
+}
+
+.about__contributorTitle {
+  font-size: em(42);
+  letter-spacing: 2px;
+  line-height: 50px;
+  font-family: $font-title;
+  margin-bottom: 53px;
+}
+
+.about__contributorName {
+  width: 100%;
+  @include flex(space-between);
+  flex-wrap: wrap;
+}
+
+.about__contributorName__single {
+  width: 33%;
+}
+
+.about__contributorName__singleTitle {
+  font-size: em(20);
+  font-family: $font-title;
+  margin-bottom: 15px;
+}
+
+.about__contributorName__singleTexte {
+  font-size: em(15);
+  font-weight: $light;
+  opacity: 0.5;
+  margin-bottom: 60px;
+}
+
+.about__close {
+  position: fixed;
+  top: 69px;
+  right: 60px;
+  font-size: em(14);
+  font-family: $font-title;
+  color: $white;
+  text-decoration: none;
+  z-index: 105;
+  display: none;
+  transition: all ease 0.3s;
+
+}
+
+.about--active {
+  display: flex;
+  transition: all ease 0.3s;
+  .about__close {
+    display: block;
+    transition: all ease 0.3s;
+  }
+}
