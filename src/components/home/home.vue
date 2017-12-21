@@ -28,31 +28,31 @@
       </div>
       <div class="home__circle home__circle--top">
         <circles></circles>
-        <div class="home__point home__point--notActive home__point--one" v-on:click="clickEventLevel" lvl-one="oneOne" lvl-two="oneTwo" lvl-three="oneThree" part-name="Awake in the clearing">
+        <div class="home__point home__point--notActive home__point--one" v-on:click="clickEventLevel" v-on:mouseenter="soundFirfly" lvl-one="oneOne" lvl-two="oneTwo" lvl-three="oneThree" part-name="Awake in the clearing">
           <div class="home__point__content"></div>
         </div>
-        <div class="home__point home__point--notActive home__point--two" v-on:click="clickEventLevel" lvl-one="twoOne" lvl-two="twoTwo" lvl-three="twoThree" part-name="Grosse partie 2">
+        <div class="home__point home__point--notActive home__point--two" v-on:click="clickEventLevel" v-on:mouseenter="soundFirfly" lvl-one="twoOne" lvl-two="twoTwo" lvl-three="twoThree" part-name="Grosse partie 2">
           <div class="home__point__content"></div>
         </div>
-        <div class="home__point home__point--notActive home__point--three" v-on:click="clickEventLevel" lvl-one="threeOne" lvl-two="threeTwo" lvl-three="threeThree" part-name=" Grosse partie 3">
+        <div class="home__point home__point--notActive home__point--three" v-on:click="clickEventLevel" v-on:mouseenter="soundFirfly" lvl-one="threeOne" lvl-two="threeTwo" lvl-three="threeThree" part-name=" Grosse partie 3">
           <div class="home__point__content"></div>
         </div>
       </div>
       <div class="home__circle home__circle--bottom">
         <circles></circles>
-        <a href="#" class="home_goToLvl" v-on:click.prevent="goTo">
+        <a href="#" class="home_goToLvl" v-on:click.prevent="goTo" v-on:mouseenter="soundFirfly">
           <div class="home__point home__point--notActive home__point--three lvlName--three" data-lvl="null">
               <div class="home__point__content"></div>
               <p class="home__point__number home__point__number--three">03</p>
           </div>
         </a>
-        <a href="#" class="home_goToLvl" v-on:click.prevent="goTo">
+        <a href="#" class="home_goToLvl" v-on:click.prevent="goTo" v-on:mouseenter="soundFirfly">
           <div class="home__point home__point--notActive home__point--two lvlName--two" data-lvl="null">
             <div class="home__point__content"></div>
             <p class="home__point__number home__point__number--two">02</p>
           </div>
         </a>
-        <a href="#" class="home_goToLvl" v-on:click.prevent="goTo">
+        <a href="#" class="home_goToLvl" v-on:click.prevent="goTo" v-on:mouseenter="soundFirfly">
           <div class="home__point home__point--one home__point--active lvlName--one" data-lvl="null">
               <div class="home__point__content"></div>
               <p class="home__point__number home__point__number--one">01</p>
@@ -64,12 +64,15 @@
     <div class="home__tutorial">
       <p class="homeTutorial__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
       <div class="homeTutorial__containerLink">
-        <a href="#" class="homeTutorial__link" v-on:click.prevent="closeNotif()" data-title="J’ai compris">J’ai compris</a>
+        <a href="#" class="homeTutorial__link" v-on:click.prevent="closeNotif()" v-on:mouseenter="soundButton"  data-title="J’ai compris">J’ai compris</a>
         <div class="homeTutorial__containerHover">
           <a href="#" class="homeTutorial__link homeTutorial__link--hover" v-on:click.prevent="closeNotif()" data-title="J’ai compris">J’ai compris</a>
         </div>
       </div>
     </div>
+    <audio src="/static/sound/Ambiance/home.mp3" autoplay loop class="homeAudio"></audio>
+    <audio src="/static/sound/interactions/buttonHover.mp3" class="homeButtonAudio"></audio>
+    <audio src="/static/sound/interactions/fireflyHover.mp3" class="homeFirflyAudio"></audio>
   </div>
 </template>
 

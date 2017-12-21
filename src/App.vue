@@ -7,6 +7,7 @@
 
 <script>
 import ink from '@/components/partials/ink/ink';
+
 export default {
   name: 'app',
   components: {

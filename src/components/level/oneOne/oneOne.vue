@@ -6,7 +6,10 @@
 <!-- templating html -->
 <template>
   <div id="oneOne" class="oneOne game">
-    <globalLvl></globalLvl>
+    <img src="/static/image/level/background-3.png" alt="background" class="game__bg">
+    <globalLvl :number="number" :title="title" :univers="univers" ></globalLvl>
+    <canvas class="game_dot"></canvas>
+    <audio src="/static/sound/Ambiance/chapOne.mp3" autoplay loop class="levelAudio"></audio>
   </div>
 </template>
 

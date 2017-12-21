@@ -10,7 +10,16 @@
   transition: all ease 3s;
 }
 .oneOne {
-  background: #111318;
+  // background: #111318;
   height: 100vh;
   @include flex();
+}
+
+.game__bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1;
 }

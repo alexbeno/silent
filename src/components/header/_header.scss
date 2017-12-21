@@ -1,0 +1,11 @@
+/**
+* silent 2017
+* [- header style -]
+*/
+
+@import '../../assets/sass/app';
+
+.header {
+  opacity: 0;
+  transition: all ease 3s;
+}

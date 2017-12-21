@@ -7,6 +7,7 @@ import Vue from 'vue';
 import router from '@/router';
 import friend from '@/components/partials/friend/friend';
 import circles from '@/components/partials/circle/circle';
+import TextSplitter from '@/assets/js/textSplitter.js';
 import { TweenMax, Power2, TimelineLite } from "gsap";
 
 export default {
@@ -21,12 +22,12 @@ export default {
       // let that = this;
       let upCircle = this.upCircle;
       /* LEAVE POINT */
-      upCircle.to(".home__circle--bottom .home__point--three", 0.5, {opacity: 0, zIndex: 0, ease:Power2.easeInOut});
-      upCircle.to(".home__circle--bottom .home__point--two", 0.5, {opacity: 0, zIndex: 0, ease:Power2.easeInOut}, "-=0.2");
-      upCircle.to(".home__circle--bottom .home__point--one", 0.5, {opacity: 0, zIndex: 0, ease:Power2.easeInOut}, "-=0.2");
+      upCircle.to(".home__circle--bottom .home__point--three", 0.3, {opacity: 0, zIndex: 0, ease:Power2.easeInOut});
+      upCircle.to(".home__circle--bottom .home__point--two", 0.3, {opacity: 0, zIndex: 0, ease:Power2.easeInOut}, "-=0.2");
+      upCircle.to(".home__circle--bottom .home__point--one", 0.3, {opacity: 0, zIndex: 0, ease:Power2.easeInOut}, "-=0.2");
 
       /* CIRCLE DRAWING */
-      upCircle.to(".home__circle--bottom .circle__svg", 2, {strokeDashoffset: "1500",  ease:Power2.easeInOut});
+      upCircle.to(".home__circle--bottom .circle__svg", 2, {strokeDashoffset: "1500",  ease:Power2.easeInOut}, "-=1");
       upCircle.to(".home__circle--top .circle__svg", 2, {strokeDashoffset: "0",  ease:Power2.easeInOut}, "-=1.5");
 
       upCircle.to(".home__circle--bottom .circle__svg", 0, {rotationY: "0",  ease:Power2.easeInOut});
@@ -59,12 +60,12 @@ export default {
       let upCircle = this.upCircle;
 
       /* LEAVE POINT */
-      upCircle.to(".home__circle--top .home__point--notActive.home__point--three", 0.5, {opacity: 0, zIndex: 0, ease:Power2.easeInOut});
-      upCircle.to(".home__circle--top .home__point--notActive.home__point--two", 0.5, {opacity: 0, zIndex: 0, ease:Power2.easeInOut}, "-=0.2");
-      upCircle.to(".home__circle--top .home__point--notActive.home__point--one", 0.5, {opacity: 0, zIndex: 0, ease:Power2.easeInOut}, "-=0.2");
+      upCircle.to(".home__circle--top .home__point--notActive.home__point--three", 0.3, {opacity: 0, zIndex: 0, ease:Power2.easeInOut});
+      upCircle.to(".home__circle--top .home__point--notActive.home__point--two", 0.3, {opacity: 0, zIndex: 0, ease:Power2.easeInOut}, "-=0.2");
+      upCircle.to(".home__circle--top .home__point--notActive.home__point--one", 0.3, {opacity: 0, zIndex: 0, ease:Power2.easeInOut}, "-=0.2");
 
       /* CIRCLE DRAWING */
-      upCircle.to(".home__circle--top .circle__svg", 2, {strokeDashoffset: "1500",  ease:Power2.easeInOut});
+      upCircle.to(".home__circle--top .circle__svg", 2, {strokeDashoffset: "1500",  ease:Power2.easeInOut}, "-=1");
       upCircle.to(".home__circle--bottom .circle__svg", 2, {strokeDashoffset: "0",  ease:Power2.easeInOut}, "-=1.5");
       upCircle.to(".home__circle--top .circle__svg", 0, {rotationY: "0",  ease:Power2.easeInOut});
       upCircle.to(".home__circle--bottom .circle__svg", 0, {rotationY: "180deg",  ease:Power2.easeInOut});
@@ -75,17 +76,15 @@ export default {
       upCircle.to(".home__circle--bottom .home__point--notActive.home__point--one", 0.5, {opacity: 1, zIndex: 2, ease:Power2.easeInOut}, "-=0.3");
       upCircle.to(".home__circle--bottom .home__point--active", 0.5, {opacity: 1, zIndex: 2, ease:Power2.easeInOut}, "-=0.3");
 
+      upCircle.to(".home__title", 1.5, {height: 50, top: 64, ease:Power2.easeInOut}, "-=2");
+      upCircle.to(".homeTitle__txt", 1.5, {scale: 0.6, ease:Power2.easeInOut}, "-=2");
+      upCircle.to(".homeTitle__explain", 1.5, {opacity: 0, ease:Power2.easeInOut}, "-=2");
 
       upCircle.to(".home__circle--top .home__point--one.home__point--active", 1.5, {left: "50%", x:"-22px", scale: 2, ease:Power2.easeInOut}, "-=2");
       upCircle.to(".home__circle--top .home__point--three.home__point--active", 1.5, {right: "50%", x:"22px", scale: 2, ease:Power2.easeInOut}, "-=2");
       upCircle.to(".home__circle--top .home__point--two.home__point--active", 1.5, {top: "80%", scale: 2, ease:Power2.easeInOut}, "-=2");
 
-
-      upCircle.to(".home__title", 1.5, {height: 50, top: 64, ease:Power2.easeInOut}, "-=2");
-      upCircle.to(".homeTitle__txt", 1.5, {scale: 0.6, ease:Power2.easeInOut}, "-=2");
-      upCircle.to(".homeTitle__explain", 1.5, {opacity: 0, ease:Power2.easeInOut}, "-=2");
-
-      upCircle.to(".home__circle--top .home__point--one.home__point--active", 1.5, {bottom: "70%", ease:Power2.easeInOut}, "-=0.5");
+      upCircle.to(".home__circle--top .home__point--one.home__point--active", 1.5, {bottom: "70%", ease:Power2.easeInOut}, "-=1.5");
       upCircle.to(".home__circle--top .home__point--three.home__point--active", 1.5, {bottom: "70%", ease:Power2.easeInOut}, "-=1.5");
       upCircle.to(".home__circle--top .home__point--two.home__point--active", 1.5, {top: "5%", scale: 2, ease:Power2.easeInOut}, "-=1.5");
 
@@ -155,46 +154,13 @@ export default {
       }
     },
 
-    mountainMoving: function(mouseX, mouseY){
-      let oneX = mouseX / 20;
-      let oneY = mouseY / 20;
-
-      let twoX = mouseX / 35;
-      let twoY = mouseY / 40;
-
-      let threeX = mouseX / 40;
-      let threeY = mouseY / 30;
-
-      let mountainOne = document.querySelector('.home__mountain--one');
-      let mountainTwo = document.querySelector('.home__mountain--two');
-      let mountainThree = document.querySelector('.home__mountain--three');
-
-      TweenMax.to(mountainOne, 0.7, {
-        x: oneX,
-        y: oneY,
-        ease: Power0.easeOut
-      })
-
-      TweenMax.to(mountainTwo, 1, {
-        x: twoX,
-        y: twoY,
-        ease: Power0.easeOut
-      })
-
-      TweenMax.to(mountainThree, 1, {
-        x: threeX,
-        y: threeY,
-        ease: Power0.easeOut
-      })
-    },
-
     friendMoving: function(mouseX, mouseY) {
       let eyesR = document.querySelector('.eyesR');
       let eyesG = document.querySelector('.eyesG');
       let head = document.querySelector('.head');
 
-      let eyesX = mouseX / 100;
-      let eyesY = mouseY / 100;
+      let eyesX = mouseX / 200;
+      let eyesY = mouseY / 200;
 
       if(eyesY < 4) {
         eyesY = - eyesY;
@@ -213,19 +179,19 @@ export default {
       TweenMax.to(eyesR, 1, {
         y: eyesY,
         x: eyesX,
-        ease: Power0.easeOut
+        ease: Power0.easeNone
       })
 
       TweenMax.to(eyesG, 1, {
         y: eyesY,
         x: eyesX,
-        ease: Power0.easeOut
+        ease: Power0.easeNone
       })
 
       TweenMax.to(head, 1, {
         // y: eyesY,
         x: eyesX,
-        ease: Power0.easeOut
+        ease: Power0.easeNone
       })
 
     },
@@ -244,7 +210,6 @@ export default {
         if(router.history.current.name === "home") {
           mouse.x = event.clientX;
           mouse.y = event.clientY;
-          this.mountainMoving(mouse.x, mouse.y);
           this.friendMoving(mouse.x, mouse.y);
         }
       });
@@ -288,6 +253,55 @@ export default {
       }, 500);
     },
 
+    fadeAmbiance: function() {
+      let sound = document.querySelector('.homeAudio');
+
+      // Set the point in playback that fadeout begins. This is for a 2 second fade out.
+      let fadePoint = sound.duration - 2;
+
+      let fadeAudio = setInterval(function () {
+
+          // Only fade if past the fade out point or not at zero already
+          if ((sound.currentTime >= fadePoint) && (sound.volume != 0.0)) {
+              sound.volume -= 0.1;
+          }
+          // When volume at zero stop all the intervalling
+          if (sound.volume === 0.0) {
+              clearInterval(fadeAudio);
+          }
+      }, 200);
+    },
+    soundFirfly: function() {
+      let sound = document.querySelector('.homeFirflyAudio');
+      let fadePoint = sound.duration - 1.5;
+      sound.play();
+      sound.volume = 0.3;
+      let fadeAudio = setInterval(function () {
+        // Only fade if past the fade out point or not at zero already
+        if ((sound.currentTime >= fadePoint) && (sound.volume > 0.1)) {
+            sound.volume -= 0.1;
+            console.log('yoA')
+        }
+        // When volume at zero stop all the intervalling
+        if (sound.volume <= 0.1) {
+            sound.pause();
+            sound.currentTime = 0;
+            console.log('yo')
+            clearInterval(fadeAudio);
+        }
+      }, 50);
+    },
+
+    soundButton: function() {
+      let sound = document.querySelector('.homeButtonAudio');
+      sound.play();
+      sound.volume = 0.3;
+      setTimeout(() => {
+        sound.pause();
+        sound.currentTime = 0;
+      }, 1600);
+    },
+
     goTo: function(event) {
       let element = event.target;
       let ink = document.querySelector('.cd-transition-layer');
@@ -297,6 +311,8 @@ export default {
         element = element.parentElement;
       }
       let link = element.getAttribute('data-lvl');
+
+      this.fadeAmbiance();
 
       ink.classList.add('visible');
       ink.classList.remove('closing');
@@ -308,19 +324,21 @@ export default {
         router.push({ path: '/' + link });
       }, 2000);
       return;
-    }
+    },
   },
+
 
   mounted: function() {
     let ink = document.querySelector('.cd-transition-layer');
     let home = document.querySelector('.home');
-
+    let sound = document.querySelector('.homeAudio');
     ink.classList.add('closing');
+    ink.classList.remove('opening');
+    console.log('coucou')
 
     setTimeout(() => {
-    ink.classList.remove('visible');
-    ink.classList.remove('opening');
-    home.style.opacity = "1";
+      ink.classList.remove('visible');
+      home.style.opacity = "1";
     }, 2000);
 
     this.upCircle = new TimelineMax;
@@ -330,5 +348,35 @@ export default {
       this.mouseEvent();
       this.friendEyes();
     }, 100);
-  }
+
+
+    // $Theo
+    const timeline = new TimelineLite()
+    const $circle = this.$el.querySelector('.home__circle--top .circle__svg')
+    const $headline = new TextSplitter(
+      this.$el.querySelector('.homeTitle__txt'), {
+        inner: true,
+        type: 'letter'
+      }
+    )
+
+    const $description = new TextSplitter(
+      this.$el.querySelector('.homeTitle__explain'), {
+        inner: true,
+        type: 'word'
+      }
+    )
+
+    timeline
+      .staggerFrom($headline.$words, 1.4, {
+        y: 100,
+        opacity: 0,
+        ease: Power3.easeOut
+      }, 0.03, '#start')
+      .staggerFrom($description.$words, 1.4, {
+        y: 100,
+        opacity: 0,
+        ease: Power3.easeOut
+      }, 0.008, '#start')
+    }
 }
