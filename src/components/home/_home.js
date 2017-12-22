@@ -157,8 +157,10 @@ export default {
         element = element.parentElement;
       }
       if(element.classList.contains('home__point--active')) {
-        this.reverseCircle();
-        this.setLevel(element);
+        this.reverseCircleB();
+        setTimeout(() => {
+          element.classList.remove('home__point--active')
+        }, 1200);
       }
       else {
         let activeItem = document.querySelector('.home__point--active');
