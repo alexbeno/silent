@@ -6,7 +6,7 @@
 <!-- templating html -->
 <template>
   <div id="headers" class="header">
-      <a href="#" class="header__about" v-on:click.prevent="opens">About</a>
+      <a href="#" class="header__about" v-on:click.prevent="opens">À propos</a>
       <a href="#" class="header__sound"><img src="/static/image/ui/cut.svg" alt="play" class="header__soundImg"></a>
   </div>
 </template>

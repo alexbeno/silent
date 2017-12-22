@@ -6,7 +6,7 @@
 <!-- templating html -->
 <template>
   <div id="preHome" class="preHome">
-    <p class="preHome__explain">Have you ever imagined what our world would look like if we took the time to look at it differently ?</p>
+    <p class="preHome__explain">Vous êtes-vous déjà imaginé à quoi pourrait ressembler notre monde si nous prenions, ne serait-ce qu’un instant, le temps de le percevoir différemment ?</p>
     <drag></drag>
     <audio src="/static/sound/Ambiance/preHome.mp3" autoplay loop class="preHomeAudio"></audio>
   </div>

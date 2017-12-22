@@ -21,20 +21,20 @@
     <div class="home__navigation">
       <div class="home__title">
         <h1 class="homeTitle__txt">SILENT</h1>
-        <h3 class="homeTitle__explain">The web experience where you see and deplace yourself only whit your hears. </h3>
+        <h3 class="homeTitle__explain">Une expérience web qui permet de prendre conscience des capacités surprenantes de notre ouïe, pour peut-être réussir à les dépasser. </h3>
       </div>
       <div class="home__lvl">
         <h1 class="homeLvl__txt point-revert"></h1>
       </div>
       <div class="home__circle home__circle--top">
         <circles></circles>
-        <div class="home__point home__point--notActive home__point--one" v-on:click="clickEventLevel" v-on:mouseenter="soundFirfly" lvl-one="oneOne" lvl-two="oneTwo" lvl-three="oneThree" part-name="Awake in the clearing">
+        <div class="home__point home__point--notActive home__point--one" v-on:click="clickEventLevel" v-on:mouseenter="soundFirfly" lvl-one="oneOne" lvl-two="oneTwo" lvl-three="oneThree" part-name="Une sombre clairière">
           <div class="home__point__content point-to-click"></div>
         </div>
-        <div class="home__point home__point--notActive home__point--two" v-on:click="clickEventLevel" v-on:mouseenter="soundFirfly" lvl-one="twoOne" lvl-two="twoTwo" lvl-three="twoThree" part-name="Grosse partie 2">
+        <div class="home__point home__point--notActive home__point--two" v-on:click="clickEventLevel" v-on:mouseenter="soundFirfly" lvl-one="twoOne" lvl-two="twoTwo" lvl-three="twoThree" part-name="La forêt mélodique">
           <div class="home__point__content"></div>
         </div>
-        <div class="home__point home__point--notActive home__point--three" v-on:click="clickEventLevel" v-on:mouseenter="soundFirfly" lvl-one="threeOne" lvl-two="threeTwo" lvl-three="threeThree" part-name=" Grosse partie 3">
+        <div class="home__point home__point--notActive home__point--three" v-on:click="clickEventLevel" v-on:mouseenter="soundFirfly" lvl-one="threeOne" lvl-two="threeTwo" lvl-three="threeThree" part-name="La jungle Jazzy">
           <div class="home__point__content"></div>
         </div>
       </div>
@@ -62,7 +62,7 @@
     </div>
     <div class="home__noise"></div>
     <div class="home__tutorial">
-      <p class="homeTutorial__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+      <p class="homeTutorial__text">Accède à une aventure sensorielle en entrant dans notre forêt, Clique sur la luciole qui scintille pour commencer</p>
       <div class="homeTutorial__containerLink">
         <a href="#" class="homeTutorial__link" v-on:click.prevent="closeNotif()" v-on:mouseenter="soundButton"  data-title="J’ai compris">J’ai compris</a>
         <div class="homeTutorial__containerHover">
