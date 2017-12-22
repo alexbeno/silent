@@ -153,7 +153,7 @@ class Perso {
               }
             }, 10);
           }, 3500);
-        }
+        }r
       }
       if(!this.win && this.begin > 1 && this.fallB === false) {
         this.fallB = true;

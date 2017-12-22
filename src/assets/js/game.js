@@ -15,7 +15,6 @@ class Point {
         this.x = x + this.offsetX
         this.y = y + this.offsetY
 
-        // this.y = y
         this.toleranceArea = toleranceArea
 
         this.selectedPoint = false
@@ -159,7 +158,6 @@ class Grid {
             for (let j = 0 ; j < this.numberLine; j++ ){
                 let _y = j*this.spaceLine
                 this.points[i][j] = new Point(_x, _y, 2, 5, this.offsetX, this.offsetY)
-            }
         }
         this.points[0][this.startingPoint].state = 'selected'
         this.numberSelected = 1
@@ -509,7 +507,6 @@ class Grid {
         //         }
         //     }, timer*i)
         // }
-
         this.validating = 'validating'
         this.lines = new Array()
         this.line = 0
@@ -581,6 +578,7 @@ class Grid {
                         } else {
                             this.context.beginPath()
                             this.context.arc( _point.x, _point.y, _point.rayon, 0, Math.PI*2 )
+
                             this.context.fillStyle = 'white'
                             this.context.shadowColor   = 'red';   // Couleur de l'ombre
                             this.context.shadowBlur    = 40;       // Largeur du flou
@@ -852,7 +850,6 @@ class Grid {
                         this.drawValidation()
                         this.perso.nextStep()
                         this.drawFinal()
-
                     }
                 }, 300)
             }
