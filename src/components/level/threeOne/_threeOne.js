@@ -1,6 +1,6 @@
 /**
 * silent 2017
-* [- oneOne js -]
+* [- threeOne js -]
 */
 
 import Vue from 'vue';
@@ -10,7 +10,7 @@ import Grid from '@/assets/js/game.js';
 import router from '@/router';
 
 export default {
-  name: 'oneOne',
+  name: 'threeOne',
   components: {
     globalLvl
   },
@@ -36,14 +36,14 @@ export default {
       // const life = document.querySelector(".life")
       // const lifeTotal = document.querySelector(".lifeTotal")
       //nombre de colonne, nombre de ligne, canvas, canvasFinal, tuto ou pas, nombre de vie
-      const grid = new Grid(3,3, canvas, canvasFinal, true, 1000, allSoundGame, "oneTwo")
+      const grid = new Grid(6,5, canvas, canvasFinal, false,3, allSoundGame, "threeTwo")
       grid.init()
       grid.draw()
       //#ALEX
       // life.innerHTML = grid.try
       // lifeTotal.innerHTML = grid.life
       canvas.addEventListener('mousemove', function(e){
-          if(router.history.current.name === "oneOne") {
+          if(router.history.current.name === "threeOne") {
             grid.mousemoveInteraction(e)
           }
       })

@@ -135,23 +135,25 @@ class Perso {
         }
       }
       else if(this.win && this.fall === false ) {
-        this.currentAnimeFrame++;
-        let footWin =  document.querySelector('.footWin');
-        footWin.play();
-        setTimeout(() => {
-          let fadeAudioB = setInterval(function () {
-            // Only fade if past the fade out point or not at zero already
-            if (footWin.volume > 0.1) {
-                footWin.volume -= 0.1;
-            }
-            // When volume at zero stop all the intervalling
-            if (footWin.volume <= 0.1) {
-                footWin.pause();
-                footWin.currentTime = 0;
-                clearInterval(fadeAudioB);
-            }
-          }, 10);
-        }, 3500);
+        this.fall = true;
+        if(this.fall === true) {
+          let footWin =  document.querySelector('.footWin');
+          footWin.play();
+          setTimeout(() => {
+            let fadeAudioB = setInterval(function () {
+              // Only fade if past the fade out point or not at zero already
+              if (footWin.volume > 0.1) {
+                  footWin.volume -= 0.1;
+              }
+              // When volume at zero stop all the intervalling
+              if (footWin.volume <= 0.1) {
+                  footWin.pause();
+                  footWin.currentTime = 0;
+                  clearInterval(fadeAudioB);
+              }
+            }, 10);
+          }, 3500);
+        }
       }
       if(!this.win && this.begin > 1 && this.fallB === false) {
         this.fallB = true;
@@ -175,6 +177,9 @@ class Perso {
         }
       }
       if(!this.win && this.begin > 1) {
+        this.currentAnimeFrame++;
+      }
+      if(this.win && this.begin > 1) {
         this.currentAnimeFrame++;
       }
       requestAnimationFrame(() => this.movePerso());
@@ -204,7 +209,7 @@ class Perso {
   }
 
   nextStep() {
-    console.log(this.path)
+    // console.log(this.path)
     if (this.begin <= 1) {
       this.currentStep = 0;
       this.begin++;
