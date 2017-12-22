@@ -7,6 +7,7 @@ import Vue from 'vue';
 import globalLvl from '@/components/partials/globalLvl/globalLvl';
 import PlayListLevel from '@/assets/js/playlistlevel.js';
 import Grid from '@/assets/js/game.js';
+import router from '@/router';
 
 export default {
   name: 'oneOne',
@@ -42,7 +43,9 @@ export default {
       // life.innerHTML = grid.try
       // lifeTotal.innerHTML = grid.life
       canvas.addEventListener('mousemove', function(e){
-          grid.mousemoveInteraction(e)
+          if(router.history.current.name === "oneOne") {
+            grid.mousemoveInteraction(e)
+          }
       })
 
       canvas.addEventListener('mousedown', function(e){
@@ -109,22 +112,16 @@ export default {
     }
   },
   mounted: function() {
-    let ink = document.querySelector('.cd-transition-layer');
     let game = document.querySelector('.game');
     let footStart = document.querySelector('.footStart');
     let footWin =  document.querySelector('.footWin');
     this.initGame();
 
     setTimeout(() => {
-      ink.classList.add('closing');
       game.style.opacity = "1";
       footStart.volume = 0.3;
       footWin.volume = 0.3;
     }, 100);
 
-    setTimeout(() => {
-      ink.classList.remove('visible');
-      ink.classList.remove('opening');
-    }, 2000);
   }
 }

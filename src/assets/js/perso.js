@@ -94,18 +94,20 @@ class Perso {
         }
         else {
           let footStart = document.querySelector('.footStart');
-          let fadeAudio = setInterval(function () {
-            // Only fade if past the fade out point or not at zero already
-            if (footStart.volume > 0.1) {
-                footStart.volume -= 0.1;
-            }
-            // When volume at zero stop all the intervalling
-            if (footStart.volume <= 0.1) {
-                footStart.pause();
-                footStart.currentTime = 0;
-                clearInterval(fadeAudio);
-            }
-          }, 10);
+          if(footStart != null) {
+            let fadeAudio = setInterval(function () {
+              // Only fade if past the fade out point or not at zero already
+              if (footStart.volume > 0.1) {
+                  footStart.volume -= 0.1;
+              }
+              // When volume at zero stop all the intervalling
+              if (footStart.volume <= 0.1) {
+                  footStart.pause();
+                  footStart.currentTime = 0;
+                  clearInterval(fadeAudio);
+              }
+            }, 10);
+          }
         }
       }
       else if(!this.win && this.begin > 1 && this.fall === false) {
