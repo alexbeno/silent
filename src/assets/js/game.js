@@ -5,6 +5,7 @@ let clear = document.querySelector(".clear")
 let play = document.querySelector(".play")
 const allSoundGame = document.querySelectorAll("audio.gameNote")
 import Perso from '@/assets/js/perso.js';
+import router from '@/router';
 
 
 class Point {
@@ -14,7 +15,6 @@ class Point {
         this.x = x + this.offsetX
         this.y = y + this.offsetY
 
-        // this.y = y 
         this.toleranceArea = toleranceArea
 
         this.selectedPoint = false
@@ -29,7 +29,7 @@ class Point {
     isCloseTo(pointX, pointY){
         if((pointX <= (this.x+ this.toleranceArea)) && (pointX >= (this.x- this.toleranceArea))){
             if((pointY <= (this.y+ this.toleranceArea)) && (pointY >= (this.y- this.toleranceArea))){
-                  return true      
+                  return true
             }
         }
     }
@@ -51,9 +51,9 @@ class Line {
         if(this.goalX-this.progressX == 0){
             this.velocityX = 10
         } else {
-            this.velocityX = (goalX-this.progressX)/10 
+            this.velocityX = (goalX-this.progressX)/10
         }
-    } 
+    }
 
     draw(){
 
@@ -88,7 +88,7 @@ class Line {
                 this.grid.validating = 'not'
                 this.last = 'not'
             }
-        }          
+        }
     }
     drawBeginStart(){
         if( this.progressX !== this.goalX){
@@ -102,20 +102,20 @@ class Line {
             this.grid.context.shadowOffsetX = 0        // Décalage en X
             this.grid.context.shadowOffsetY = 0       // Décalage en Y
             this.grid.context.stroke()
-        }            
+        }
     }
     autoDraw(){
         this.grid.validating = 'validating'
 
         this.animation = requestAnimationFrame(() => this.autoDraw());
         this.draw()
-    }  
+    }
 }
 
 class Grid {
-    constructor(numberColumn, numberLine, canvas, canvasFinal, tuto, numberTry, allSoundGame) {
+    constructor(numberColumn, numberLine, canvas, canvasFinal, tuto, numberTry, allSoundGame, next) {
         this.numberColumn = numberColumn +1
-        this.numberLine = numberLine 
+        this.numberLine = numberLine
         this.validating = 'not'
         this.points = new Array(numberColumn)
         this.lines = new Array()
@@ -148,6 +148,7 @@ class Grid {
 
         this.spaceColumn = (2*this.offsetX-window.innerWidth-2*2)/(-this.numberColumn+1)
 
+        this.next = next;
     }
 
     init() {
@@ -156,8 +157,7 @@ class Grid {
             this.points[i] = new Array(this.numberLine)
             for (let j = 0 ; j < this.numberLine; j++ ){
                 let _y = j*this.spaceLine
-                this.points[i][j] = new Point(_x, _y, 2, 5, this.offsetX, this.offsetY)  
-            }
+                this.points[i][j] = new Point(_x, _y, 2, 5, this.offsetX, this.offsetY)
         }
         this.points[0][this.startingPoint].state = 'selected'
         this.numberSelected = 1
@@ -167,7 +167,7 @@ class Grid {
             this.numberColumn = this.numberLine +1
             this.combinaison = new Array(this.numberColumn)
             this.setTuto()
-        } 
+        }
         this.generateCombinaison()
 
         this.draw()
@@ -460,7 +460,7 @@ class Grid {
             _closerPoint.state = false
             this.compteurTuto = this.compteurTuto + 1
             this.setTuto()
-        }        
+        }
     }
 
     playSong(){
@@ -479,7 +479,7 @@ class Grid {
         }
         this.allSoundGame[index].volume = 1
         this.allSoundGame[index].currentTime = 0
-        this.allSoundGame[index].play()        
+        this.allSoundGame[index].play()
     }
 
     brume() {
@@ -507,7 +507,6 @@ class Grid {
         //         }
         //     }, timer*i)
         // }
-        
         this.validating = 'validating'
         this.lines = new Array()
         this.line = 0
@@ -537,15 +536,15 @@ class Grid {
                     }
                     if(i == this.numberColumn-1  && _point.state == 'find'){
                         this.context.beginPath()
-                        this.context.arc( _point.x, _point.y, _point.rayon, 0, Math.PI*2 )    
+                        this.context.arc( _point.x, _point.y, _point.rayon, 0, Math.PI*2 )
                         this.context.fillStyle = 'white'
-                        this.context.fill() 
+                        this.context.fill()
                     } else {
                         if(_point.state == 'find'){
                             this.context.beginPath()
-                            this.context.arc( _point.x, _point.y, _point.rayon, 0, Math.PI*2 )    
+                            this.context.arc( _point.x, _point.y, _point.rayon, 0, Math.PI*2 )
                             this.context.fillStyle = 'white'
-                            
+
                             this.context.shadowColor   = '#42d1f4';   // Couleur de l'ombre
                             this.context.shadowBlur    = 40;       // Largeur du flou
                             this.context.shadowOffsetX = 0;        // Décalage en X
@@ -554,7 +553,7 @@ class Grid {
                             this.context.shadowBlur    = 50;       // Largeur du flou
                             this.context.shadowOffsetX = 0;        // Décalage en X
                             this.context.shadowOffsetY = 0;       // Décalage en Y
-                            this.context.fill() 
+                            this.context.fill()
                             this.context.shadowBlur    = 60;       // Largeur du flou
                             this.context.shadowOffsetX = 0;        // Décalage en X
                             this.context.shadowOffsetY = 0;       // Décalage en Y
@@ -566,7 +565,7 @@ class Grid {
                             this.context.shadowBlur    = 20;       // Largeur du flou
                             this.context.shadowOffsetX = 0;        // Décalage en X
                             this.context.shadowOffsetY = 0;       // Décalage en Y
-                            this.context.fill() 
+                            this.context.fill()
                             this.context.shadowBlur    = 20;       // Largeur du flou
                             this.context.shadowOffsetX = 0;        // Décalage en X
                             this.context.shadowOffsetY = 0;       // Décalage en Y
@@ -575,10 +574,11 @@ class Grid {
                             this.context.shadowOffsetX = 0;        // Décalage en X
                             this.context.shadowOffsetY = 0;       // Décalage en Y
                             this.context.fill()
-                            this.context.fill()                             
+                            this.context.fill()
                         } else {
                             this.context.beginPath()
-                            this.context.arc( _point.x, _point.y, _point.rayon, 0, Math.PI*2 )    
+                            this.context.arc( _point.x, _point.y, _point.rayon, 0, Math.PI*2 )
+
                             this.context.fillStyle = 'white'
                             this.context.shadowColor   = 'red';   // Couleur de l'ombre
                             this.context.shadowBlur    = 40;       // Largeur du flou
@@ -592,7 +592,7 @@ class Grid {
                             this.context.shadowBlur    = 80;       // Largeur du flou
                             this.context.shadowOffsetX = 0;        // Décalage en X
                             this.context.shadowOffsetY = 0;       // Décalage en Y
-                            this.context.fill() 
+                            this.context.fill()
                             this.context.shadowBlur    = 60;       // Largeur du flou
                             this.context.shadowOffsetX = 0;        // Décalage en X
                             this.context.shadowOffsetY = 0;       // Décalage en Y
@@ -604,15 +604,15 @@ class Grid {
                             this.context.shadowBlur    = 20;       // Largeur du flou
                             this.context.shadowOffsetX = 0;        // Décalage en X
                             this.context.shadowOffsetY = 0;       // Décalage en Y
-                            this.context.fill() 
+                            this.context.fill()
                             this.context.shadowBlur    = 20;       // Largeur du flou
                             this.context.shadowOffsetX = 0;        // Décalage en X
                             this.context.shadowOffsetY = 0;       // Décalage en Y
-                            this.context.fill()                                  
+                            this.context.fill()
                         }
-                       
+
                     }
-               
+
                 }
             }, timer*i)
         }
@@ -620,7 +620,6 @@ class Grid {
 
     mousemoveInteraction(e){
         //if(this.validating == 'not'){
-            console.log('coucou')
             this.draw()
             this.mouseX = e.offsetX
             this.mouseY = e.offsetY
@@ -639,7 +638,7 @@ class Grid {
                 if(_closerPoint.isCloseTo(this.mouseX, this.mouseY)){
                     if((!isSelected)){
                         this.context.beginPath()
-                        this.context.arc( _closerPoint.x, _closerPoint.y, 3, 0, Math.PI*2 ) 
+                        this.context.arc( _closerPoint.x, _closerPoint.y, 3, 0, Math.PI*2 )
                         switch (_closerPoint.state) {
                           case false:
                             this.context.fillStyle = 'white';
@@ -657,16 +656,16 @@ class Grid {
                             this.context.shadowOffsetY = 0;       // Décalage en Y
                             break;
                         }
-                        this.context.fill() 
+                        this.context.fill()
 
                         this.canvas.style.cursor = "pointer"
                     } else {
-                        this.canvas.style.cursor = "auto" 
+                        this.canvas.style.cursor = "auto"
 
-                    }   
+                    }
                 } else {
-                    this.canvas.style.cursor = "auto" 
-                }            
+                    this.canvas.style.cursor = "auto"
+                }
             }
             if(this.selectedPoint) {
                 this.drawPath(this.closerPoint, this.mouseX, this.mouseY)
@@ -680,7 +679,7 @@ class Grid {
             let columnClicked = Math.round((this.mouseX- this.offsetX)/(this.spaceColumn ))
             let lineClicked = Math.round((this.mouseY- this.offsetY)/(this.spaceLine))
         let _closerPoint = this.points[columnClicked][lineClicked]
-        
+
         if (columnClicked <= this.numberSelected){
             if(_closerPoint.isCloseTo(clickX, clickY)){
                 if(columnClicked == this.numberSelected){
@@ -694,7 +693,7 @@ class Grid {
                 this.playerCombinaison[columnClicked] = lineClicked
 
                 this.draw()
-            }            
+            }
         }
     }
 
@@ -722,7 +721,7 @@ class Grid {
         this.contextFinal.lineTo(0, this.canvasFinal.height)
         this.contextFinal.lineTo(0, this.points[0][this.startingPoint].y)
         this.contextFinal.fillStyle = 'black'
-        this.contextFinal.fill()     
+        this.contextFinal.fill()
     }
 
     drawFinal(){
@@ -759,7 +758,7 @@ class Grid {
         this.contextFinal.lineTo(pointLast.x, this.canvasFinal.height)
         this.contextFinal.lineTo(pointLast.x, pointLast.y)
         this.contextFinal.fillStyle = 'black'
-        this.contextFinal.fill()        
+        this.contextFinal.fill()
     }
     checkValidation(){
         this.try--
@@ -780,14 +779,14 @@ class Grid {
 
             if(this.try > 0){
                 if(numberRight < this.numberColumn){
-                    console.log('encore des essai, pas bonne combinaison')
+                    // console.log('encore des essai, pas bonne combinaison')
                     this.drawValidation()
                     this.validating = 'not'
                     //this.drawFinal()
                 }
                 if(numberRight == this.numberColumn){
-                    console.log('encore des essai, bonne combinaison')
-                    //validation finale 
+                    // console.log('encore des essai, bonne combinaison')
+                    //validation finale
                     //this.drawValidation()
                     this.checkCombinaison = new Array()
                     for(let i =0; i<this.combinaison.length; i++){
@@ -803,13 +802,21 @@ class Grid {
                     this.perso.path = this.checkCombinaison
                     this.brume();
                     setTimeout(()=> {
-                        console.log('plus d\'essai bonne combi')
+                        // console.log('plus d\'essai bonne combi')
                         //validation final
                         this.drawValidation()
                         this.perso.nextStep()
                         this.drawFinal()
-    
+
                         this.success = true
+                        setTimeout(() => {
+                            let game = document.querySelector('.game');
+                            game.style.opacity = "0";
+                            setTimeout(() => {
+                                router.push({ path: '/' + this.next });
+                            }, 1000);
+                        }, 3500);
+                        // console.log(this.next)
                     }, 300)
 
                 }
@@ -830,26 +837,25 @@ class Grid {
                 this.brume();
                 setTimeout(()=> {
                     if(numberRight == this.numberColumn){
-                        console.log('plus d\'essai bonne combi')
+                        // console.log('plus d\'essai bonne combi')
                         //validation final
                         this.drawValidation()
                         this.perso.nextStep()
                         this.drawFinal()
-    
+
                         this.success = true
                     } else {
-                        console.log('plus d\'essai maauvaise combi')
+                        // console.log('plus d\'essai maauvaise combi')
                         //validation final
                         this.drawValidation()
                         this.perso.nextStep()
                         this.drawFinal()
-    
                     }
                 }, 300)
             }
 
         } else {
-            console.log('vous n\'avez pas tout renseigner')
+            // console.log('vous n\'avez pas tout renseigner')
         }
     }
 
@@ -861,7 +867,7 @@ class Grid {
         if((columnClicked< this.numberColumn && columnClicked >= 0 )&& (lineClicked<this.numberLine && lineClicked >=0)){
             let _closerPoint = this.points[columnClicked][lineClicked]
             //if we drag line from the last point select
-            console.log(columnClicked)
+            // console.log(columnClicked)
             let isSelected = true
             if(typeof(this.playerCombinaison[columnClicked]) == 'undefined'){
                 isSelected = false
@@ -893,15 +899,15 @@ class Grid {
                 if (columnClicked == this.numberSelected){
                     if(columnClicked > 0){
                         if(_closerPoint.isCloseTo(clickX, clickY)){
-                            this.numberSelected ++ 
+                            this.numberSelected ++
                             _closerPoint.state = 'selected'
-                            this.playerCombinaison[columnClicked] = lineClicked      
-                        } 
-                    }    
-                }                
-                
+                            this.playerCombinaison[columnClicked] = lineClicked
+                        }
+                    }
+                }
+
             } else {
-                console.log('find')
+                // console.log('find')
             }
         }
 
@@ -920,10 +926,10 @@ class Grid {
 
                 if (columnClicked == this.numberSelected){
                     if(_closerPoint.isCloseTo(clickX, clickY)){
-                        this.numberSelected ++ 
+                        this.numberSelected ++
                         _closerPoint.state = 'selected'
-                        this.playerCombinaison[columnClicked] = lineClicked      
-                    }     
+                        this.playerCombinaison[columnClicked] = lineClicked
+                    }
                 }
             }
         }
@@ -976,7 +982,7 @@ class Grid {
             this.numberColumn = this.numberLine +1
             this.combinaison = new Array(this.numberColumn)
             this.setTuto()
-        } 
+        }
         grid.generateCombinaison()
         grid.draw()
     }

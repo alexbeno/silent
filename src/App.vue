@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <router-view/>
-    <ink></ink>
     <headers></headers>
     <about></about>
     <mobile></mobile>
@@ -9,7 +8,6 @@
 </template>
 
 <script>
-import ink from '@/components/partials/ink/ink';
 import headers from '@/components/header/header';
 import about from '@/components/partials/about/about';
 import mobile from '@/components/partials/mobile/mobile';
@@ -17,7 +15,6 @@ import mobile from '@/components/partials/mobile/mobile';
 export default {
   name: 'app',
   components: {
-    ink,
     headers,
     about,
     mobile,

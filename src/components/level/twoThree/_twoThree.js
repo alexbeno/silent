@@ -1,6 +1,6 @@
 /**
 * silent 2017
-* [- oneOne js -]
+* [- twoThree js -]
 */
 
 import Vue from 'vue';
@@ -10,13 +10,13 @@ import Grid from '@/assets/js/game.js';
 import router from '@/router';
 
 export default {
-  name: 'oneOne',
+  name: 'twoThree',
   components: {
     globalLvl
   },
   data: function() {
     return {
-      number: '1',
+      number: '3',
       title: 'Apprendre',
       univers: 'Awake in the clearing',
     }
@@ -36,14 +36,14 @@ export default {
       // const life = document.querySelector(".life")
       // const lifeTotal = document.querySelector(".lifeTotal")
       //nombre de colonne, nombre de ligne, canvas, canvasFinal, tuto ou pas, nombre de vie
-      const grid = new Grid(3,3, canvas, canvasFinal, true, 1000, allSoundGame, "oneTwo")
+      const grid = new Grid(5,5, canvas, canvasFinal, false , 1, allSoundGame, "home")
       grid.init()
       grid.draw()
       //#ALEX
       // life.innerHTML = grid.try
       // lifeTotal.innerHTML = grid.life
       canvas.addEventListener('mousemove', function(e){
-          if(router.history.current.name === "oneOne") {
+          if(router.history.current.name === "twoThree") {
             grid.mousemoveInteraction(e)
           }
       })
@@ -61,7 +61,7 @@ export default {
       })
 
       check.addEventListener('click', function(e){
-          e.preventDefault();
+            e.preventDefault();
           grid.checkValidation()
 
           //#ALEX : affiche infos
@@ -81,7 +81,7 @@ export default {
       window.addEventListener('resize', grid.resize())
 
       play.addEventListener('click', function(e){
-          e.preventDefault();
+        e.preventDefault();
         sound.play();
         let fadeAudio = setInterval(function () {
           // Only fade if past the fade out point or not at zero already

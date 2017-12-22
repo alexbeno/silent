@@ -14,7 +14,7 @@
 
       <div class="globalLvl__univers">
         <div class="globalLvl__universDot"></div>
-        <h1 class="globalLvl__universTitle">{{univers}}</h1>
+        <h1 class="globalLvl__universTitle" v-on:click="goHome">{{univers}}</h1>
       </div>
     </div>
     <div class="globalLvl__bottom">
