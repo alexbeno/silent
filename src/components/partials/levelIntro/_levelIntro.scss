@@ -1,0 +1,36 @@
+/**
+* silent 2017
+* [- pre home style -]
+*/
+
+@import '../../assets/sass/app';
+
+.levelIntro {
+  background: #111318;
+  height: 100vh;
+  transition: all ease 1s;
+  @include flex();
+}
+
+.levelIntro__explain {
+  max-width: 690px;
+  text-align: center;
+  line-height: 40px;
+  font-family: $font-title;
+  font-size: em(30px);
+  letter-spacing: 1.4px;
+  opacity: 0.7;
+
+  /deep/
+  .text-word {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+
+  .text-word__inner {
+      display: inline-block;
+      width: 100%;
+  }
+}

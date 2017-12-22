@@ -11,6 +11,8 @@
     <canvas class="canvas_final"></canvas>
     <div class="game__brume"></div>
     <canvas class="game_dot"></canvas>
+    <levelIntro></levelIntro>
+
     <!-- canvas game-->
 
     <audio src="/static/sound/Ambiance/chapOne.mp3" autoplay loop class="levelAudio"></audio>
