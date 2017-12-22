@@ -23,13 +23,12 @@ export default {
   methods: {
     initGame: function() {
       let canvas = document.querySelector(".game_dot")
-      // let check = document.querySelector(".check")
-      // let clear = document.querySelector(".clear")
-      // let play = document.querySelector(".play")
+      const sound = document.querySelector(".levelAudio")
       let canvasFinal = document.querySelector(".canvas_final")
       let check = document.querySelector(".globalLvl__containerLink")
       let play = document.querySelector(".globalLvl__play")
       const allSoundGame = document.querySelectorAll("audio.gameNote")
+      const fadePoint = sound.duration - 1.5;
 
 
       //#ALEX : affiche infos
@@ -78,6 +77,19 @@ export default {
       window.addEventListener('resize', grid.resize())
 
       play.addEventListener('click', function(){
+        sound.play();
+        let fadeAudio = setInterval(function () {
+          // Only fade if past the fade out point or not at zero already
+          if (sound.volume > 0.1) {
+              sound.volume -= 0.1;
+          }
+          // When volume at zero stop all the intervalling
+          if (sound.volume <= 0.1) {
+              sound.pause();
+              sound.currentTime = 0;
+              clearInterval(fadeAudio);
+          }
+        }, 10);
           if(grid.numberLine == '3' && (grid.tuto == false)){
               let playCombinaison = grid.combinaison.map(x => x * 2);
               var playList = new PlayListLevel(playCombinaison, allSoundGame)
@@ -87,7 +99,7 @@ export default {
           if(grid.tuto){
               grid.playSong()
           } else {
-              playList.playAll(2)        
+              playList.playAll(2)
           }
       })
 
@@ -99,11 +111,15 @@ export default {
   mounted: function() {
     let ink = document.querySelector('.cd-transition-layer');
     let game = document.querySelector('.game');
+    let footStart = document.querySelector('.footStart');
+    let footWin =  document.querySelector('.footWin');
     this.initGame();
 
     setTimeout(() => {
       ink.classList.add('closing');
       game.style.opacity = "1";
+      footStart.volume = 0.3;
+      footWin.volume = 0.3;
     }, 100);
 
     setTimeout(() => {
