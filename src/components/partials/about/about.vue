@@ -8,7 +8,7 @@
     <div id="about" class="about">
       <div class="about__explainContainer">
         <div class="about__universDot"></div>
-        <p class="about__explain"><span>Silent</span> is ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnansectetur adipiscing elit, sed do eiusmod tempor</p>
+        <p class="about__explain"><span>Silent</span> est une expérience web ludique, qui vise à affiner votre ouïe en aidant votre compère durant la traversée d’une forêt mystérieuse. L’objectif étant de vous montrer que peu à peu, la patience et l’apprentissage offre le moyen de s’adapter à une contrainte donnée.</p>
       </div>
       <div class="about__contributor">
         <h1 class="about__contributorTitle">Contributeurs</h1>
