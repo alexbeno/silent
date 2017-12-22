@@ -6,5 +6,16 @@
 import Vue from 'vue';
 
 export default {
-  name: 'header',
+  name: 'headers',
+  methods: {
+    opens: function() {
+      let section = document.querySelector('.about');
+      section.classList.add('about--active');
+      setTimeout(() => {
+        section.style.opacity ="1";
+      }, 100);
+    }
+  },
+  mounted: function() {
+  }
 }

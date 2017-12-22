@@ -27,7 +27,6 @@
             </div>
           </div>
       </div>
-      <a href="#" class="globalLvl__sound"><img src="/static/image/ui/cut.svg" alt="play" class="globalLvl__soundImg"></a>
     </div>
     <audio src="/static/sound/interactions/buttonHover.mp3" class="homeButtonAudio"></audio>
   </div>

@@ -26,11 +26,15 @@ export default {
   },
 
   mounted() {
+    setTimeout(() => {
+      let page = document.querySelector('.preHome');
+      page.style.opacity="1";
+    }, 100)
     this.init()
   },
 
   methods: {
-    
+
     init() {
       this.el.cursor = this.$el.querySelector('.preHomeDrag__dragLine__pointContainer')
       this.el.line = this.$el.querySelector('.preHomeDrag__dragLine__line')
@@ -46,7 +50,7 @@ export default {
     panMove(event) {
       this.cursorPosition = Math.round(this.el.cursor.getBoundingClientRect().left) + (this.el.cursor.offsetWidth / 2)
       this.tempMove = event.deltaX
-      
+
       let value = map(this.cursorPosition, this.leftLimit, this.rightLimit, 0, 1);
       this.updateCursorPosition(value)
     },
@@ -84,7 +88,7 @@ export default {
     },
     fadeAmbiance() {
       let sound = document.querySelector('.preHomeAudio');
-      let fadePoint = sound.duration - 10; 
+      let fadePoint = sound.duration - 10;
       let fadeAudio = setInterval(function () {
         // Only fade if past the fade out point or not at zero already
         if ((sound.currentTime >= fadePoint) && (sound.volume > 0.1)) {
@@ -99,13 +103,15 @@ export default {
 
     changePage() {
       this.fadeAmbiance()
+      let page = document.querySelector('.preHome');
+      page.style.opacity="0";
       setTimeout(() => {
         router.push({ path: '/home'})
-      }, 2000)
+      }, 1000)
     },
 
     resize() {
-      
+
     }
 
   }

@@ -5,7 +5,28 @@
 
 @import '../../assets/sass/app';
 
-.header {
-  opacity: 0;
-  transition: all ease 3s;
+
+.header__sound {
+  position: fixed;
+  bottom: 76px;
+  right: 60px;
+  z-index: 30;
+}
+
+.header__soundImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  box-shadow: 0 0 8px 1px rgba(255,255,255,0.50);
+}
+
+.header__about {
+  position: fixed;
+  top: 69px;
+  right: 60px;
+  font-size: em(14);
+  font-family: $font-title;
+  color: $white;
+  text-decoration: none;
+  z-index: 30;
 }

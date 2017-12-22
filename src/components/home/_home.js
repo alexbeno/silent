@@ -50,7 +50,19 @@ export default {
       upCircle.to(".home__circle--top .home__point--three.home__point--active", 1.5, {right: "-17px", x:"0", scale: 1, ease:Power2.easeInOut}, "-=2");
       upCircle.to(".home__circle--top .home__point--two.home__point--active", 1.5, {top: "-18px", scale: 1, ease:Power2.easeInOut}, "-=2");
 
-      upCircle.to(".home__lvl", 1.5, {y: "50px", opacity: 0, ease:Power2.easeInOut}, "-=3.5");
+      // const $levelTitle = new TextSplitter(
+      //   this.$el.querySelector('.homeLvl__txt'), {
+      //     inner: true,
+      //     type: 'word'
+      //   }
+      // )
+
+      upCircle.to(".home__lvl", 1.5, {y: "50px", opacity: 0, ease:Power2.easeInOut}, "-=2.5");
+      // upCircle.staggerTo($levelTitle.$words, 1.4, {
+      //   y: 100,
+      //   opacity: 0,
+      //   ease: Power3.easeOut
+      // }, 0.008, "-=2.5")
 
     },
 
@@ -76,6 +88,7 @@ export default {
       upCircle.to(".home__circle--bottom .home__point--notActive.home__point--one", 0.5, {opacity: 1, zIndex: 2, ease:Power2.easeInOut}, "-=0.3");
       upCircle.to(".home__circle--bottom .home__point--active", 0.5, {opacity: 1, zIndex: 2, ease:Power2.easeInOut}, "-=0.3");
 
+
       upCircle.to(".home__title", 1.5, {height: 50, top: 64, ease:Power2.easeInOut}, "-=2");
       upCircle.to(".homeTitle__txt", 1.5, {scale: 0.6, ease:Power2.easeInOut}, "-=2");
       upCircle.to(".homeTitle__explain", 1.5, {opacity: 0, ease:Power2.easeInOut}, "-=2");
@@ -88,7 +101,18 @@ export default {
       upCircle.to(".home__circle--top .home__point--three.home__point--active", 1.5, {bottom: "70%", ease:Power2.easeInOut}, "-=1.5");
       upCircle.to(".home__circle--top .home__point--two.home__point--active", 1.5, {top: "5%", scale: 2, ease:Power2.easeInOut}, "-=1.5");
 
-      upCircle.to(".home__lvl", 1.5, {y: "-120px", opacity: 1, ease:Power2.easeInOut}, "-=1.5");
+      const $levelTitle = new TextSplitter(
+        this.$el.querySelector('.homeLvl__txt'), {
+          inner: true,
+          type: 'word'
+        }
+      )
+      upCircle.to(".home__lvl", 1.2, {y: "-120px", opacity: 1, ease:Power2.easeInOut}, "-=1.5");
+      upCircle.staggerFrom($levelTitle.$words, 1.4, {
+        y: 100,
+        opacity: 0,
+        ease: Power3.easeOut
+      }, 0.008, '-=1.1')
     },
 
     drawCircle: function() {
@@ -133,8 +157,10 @@ export default {
         element = element.parentElement;
       }
       if(element.classList.contains('home__point--active')) {
-        this.reverseCircle();
-        this.setLevel(element);
+        this.reverseCircleB();
+        setTimeout(() => {
+          element.classList.remove('home__point--active')
+        }, 1200);
       }
       else {
         let activeItem = document.querySelector('.home__point--active');
@@ -223,7 +249,7 @@ export default {
     },
 
     friendEyes: function() {
-      let friend = document.querySelector('.friend__container__svg');
+      let friend = document.querySelector('.friend__container__svg')
       setInterval(() => {
         friend.classList.remove('friend__eyesAnime')
         setTimeout(() => {
@@ -233,24 +259,44 @@ export default {
     },
 
     notif: function() {
-      let container = document.querySelector('.home__tutorial');
-      let buble = document.querySelector('.homeFriend__button');
+      const timeline = new TimelineLite()
+      const $container = document.querySelector('.home__tutorial')
+      const buble = document.querySelector('.homeFriend__button')
+      const link = document.querySelector('.homeTutorial__containerLink')
+
+      timeline
+        .from($container, 0.6, {
+          opacity: 0,
+          ease: Power3.easeOut
+        }, '#start')
+        .staggerFrom(this.$description.$words, 1.4, {
+          y: 100,
+          opacity: 0,
+          ease: Power3.easeOut
+        }, 0.008, '#start +=0.2')
+        .from(link, 1.4, {
+          y: 100,
+          opacity: 0,
+          ease: Power3.easeOut
+        }, '#start +=0.4')
 
       buble.style.opacity = "0"
-      container.style.display = "flex";
-      setTimeout(() => {
-        container.classList.add('home__tutorial--active');
-      }, 100);
+      $container.style.display = "flex";
     },
     closeNotif: function() {
       let container = document.querySelector('.home__tutorial');
       let buble = document.querySelector('.homeFriend__button');
 
-      buble.style.opacity = "1"
-      container.classList.remove('home__tutorial--active');
+      buble.style.display ="none";
+
+      TweenMax.to(container, 0.9, {
+        opacity: 0,
+        ease: Power3.easeOut
+      })
+      // container.classList.remove('home__tutorial--active');
       setTimeout(() => {
-        container.style.display = "none ";
-      }, 500);
+        container.style.display = "none";
+      }, 1000);
     },
 
     fadeAmbiance: function() {
@@ -280,16 +326,14 @@ export default {
         // Only fade if past the fade out point or not at zero already
         if ((sound.currentTime >= fadePoint) && (sound.volume > 0.1)) {
             sound.volume -= 0.1;
-            console.log('yoA')
         }
         // When volume at zero stop all the intervalling
         if (sound.volume <= 0.1) {
             sound.pause();
             sound.currentTime = 0;
-            console.log('yo')
             clearInterval(fadeAudio);
         }
-      }, 50);
+      }, 10);
     },
 
     soundButton: function() {
@@ -304,25 +348,19 @@ export default {
 
     goTo: function(event) {
       let element = event.target;
-      let ink = document.querySelector('.cd-transition-layer');
       let home = document.querySelector('.home');
 
       if(!event.target.classList.contains('home__point')) {
         element = element.parentElement;
       }
       let link = element.getAttribute('data-lvl');
-
       this.fadeAmbiance();
-
-      ink.classList.add('visible');
-      ink.classList.remove('closing');
-      ink.classList.add('opening');
 
       home.style.opacity ="0";
 
       setTimeout(() => {
         router.push({ path: '/' + link });
-      }, 2000);
+      }, 1000);
       return;
     },
   },
@@ -330,16 +368,8 @@ export default {
 
   mounted: function() {
     let ink = document.querySelector('.cd-transition-layer');
-    let home = document.querySelector('.home');
     let sound = document.querySelector('.homeAudio');
-    ink.classList.add('closing');
-    ink.classList.remove('opening');
-    console.log('coucou')
-
-    setTimeout(() => {
-      ink.classList.remove('visible');
-      home.style.opacity = "1";
-    }, 2000);
+    let page = document.querySelector('.home');
 
     this.upCircle = new TimelineMax;
     this.finish = false;
@@ -347,6 +377,14 @@ export default {
       this.circleNavigation();
       this.mouseEvent();
       this.friendEyes();
+      page.style.opacity="1";
+
+      this.$description = new TextSplitter(
+        this.$el.querySelector('.homeTutorial__text'), {
+          inner: true,
+          type: 'word'
+        }
+      )
     }, 100);
 
 

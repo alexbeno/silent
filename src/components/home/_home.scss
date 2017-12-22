@@ -9,7 +9,8 @@
   width: 100%;
   height: 100vh;
   background: $black;
-  transition: all ease 3s;
+  transition: all ease 1s;
+  opacity: 0;
   @include flex();
 }
 
@@ -105,10 +106,13 @@
 }
 
 .homeFriend__button {
+  height: auto;
+  width: 50px;
+  display: block;
   transform: translateX(-50px);
   transition: all ease 0.5s;
   will-change: auto;
-  animation: ring 4s .7s ease-in-out infinite;
+  animation: ring 3s ease-in-out infinite;
   @include keyframes(ring) {
     0% { transform: translateX(-50px) rotate(0); }
     1% { transform: translateX(-50px) rotate(30deg); }
@@ -132,9 +136,13 @@
     37% { transform: translateX(-50px) rotate(2deg); }
     39% { transform: translateX(-50px) rotate(-1deg); }
     41% { transform: translateX(-50px) rotate(1deg); }
-    43% { transform: translateX(-50px) rotate(0); }
     100% { transform: translateX(-50px) rotate(0); }
   }
+}
+
+.homeFriend__bullet {
+  width: 100%;
+  height: auto;
 }
 
 .home__navigation {
@@ -168,8 +176,21 @@
   }
 }
 
+.homeTitle__txt {
+  @include xlarge() {
+    font-size: em(30);
+    letter-spacing: 20px;
+    margin-right: -20px;
+  }
+}
+
 .homeTitle__explain {
   max-width: 500px;
+  @include xlarge() {
+    font-size: 19px;
+    width: 350px;
+    line-height: 22px;
+  }
 }
 
 
@@ -184,6 +205,19 @@
   opacity: 0;
   user-select: none;
   will-change: auto;
+
+  /deep/
+  .text-word {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    margin-right: 0.3rem;
+  }
+
+  .text-word__inner {
+      display: inline-block;
+      width: 100%;
+  }
 }
 
 .homeLvl__txt {
@@ -202,6 +236,9 @@
   left: 0;
   @include flex();
   will-change: auto;
+  @include xlarge() {
+    width: 360px;
+  }
 }
 
 .home__circle--bottom {
@@ -376,14 +413,23 @@
   background: rgba($black, 0.85);
   z-index: 10;
   display: none;
-  opacity: 0;
-  transition: all ease 0.5s;
-}
-
-.home__tutorial--active {
   opacity: 1;
   transition: all ease 0.5s;
+
+  /deep/
+  .text-word {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    margin-right: 0.6rem;
+  }
+
+  .text-word__inner {
+      display: inline-block;
+      width: 100%;
+  }
 }
+
 
 .homeTutorial__text {
   font-family: $font-title;
@@ -437,4 +483,52 @@
   background: white;
   color: $black;
   box-shadow: unset;
+}
+
+.home__point:not(.home__point--active) {
+
+  .point-to-click {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1px solid #5F6064;
+      transform: scale(1);
+      animation: pulse 2.6s 0.5s ease-in-out infinite;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: -14px;
+      left: -14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid #5F6064;
+      transform: scale(1);
+      animation: pulse 2.6s ease-in-out infinite;
+    }
+    @include keyframes(pulse) {
+      0% {
+        transform: scale(1);
+        opacity: 0;
+      }
+      25% {
+        opacity: 1;
+      }
+      75% {
+        transform: scale(3);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
+  }
 }

@@ -24,12 +24,12 @@
         <h3 class="homeTitle__explain">The web experience where you see and deplace yourself only whit your hears. </h3>
       </div>
       <div class="home__lvl">
-        <h1 class="homeLvl__txt"></h1>
+        <h1 class="homeLvl__txt point-revert"></h1>
       </div>
       <div class="home__circle home__circle--top">
         <circles></circles>
         <div class="home__point home__point--notActive home__point--one" v-on:click="clickEventLevel" v-on:mouseenter="soundFirfly" lvl-one="oneOne" lvl-two="oneTwo" lvl-three="oneThree" part-name="Awake in the clearing">
-          <div class="home__point__content"></div>
+          <div class="home__point__content point-to-click"></div>
         </div>
         <div class="home__point home__point--notActive home__point--two" v-on:click="clickEventLevel" v-on:mouseenter="soundFirfly" lvl-one="twoOne" lvl-two="twoTwo" lvl-three="twoThree" part-name="Grosse partie 2">
           <div class="home__point__content"></div>
