@@ -21,9 +21,9 @@
       <div class="globalLvl__left">
         <a href="#" class="globalLvl__play"><img src="/static/image/ui/play.svg" alt="play" class="globalLvl__playImg"></a>
         <div class="globalLvl__containerLink">
-            <a href="#" class="globalLvl__link" v-on:click.prevent="closeNotif()" v-on:mouseenter="soundButton">UNVEIL THE PATH</a>
+            <a href="#" class="globalLvl__link" v-on:click.prevent="closeNotif()" v-on:mouseenter="soundButton">TRAVERSER</a>
             <div class="globalLvl__containerHover">
-              <a href="#" class="globalLvl__link globalLvl__link--hover">UNVEIL THE PATH</a>
+              <a href="#" class="globalLvl__link globalLvl__link--hover">TRAVERSER</a>
             </div>
           </div>
       </div>

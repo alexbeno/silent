@@ -18,7 +18,7 @@ export default {
     return {
       number: '1',
       title: 'Apprendre',
-      univers: 'Awake in the clearing',
+      univers: 'Une sombre clairière',
     }
   },
   methods: {

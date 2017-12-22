@@ -17,8 +17,8 @@ export default {
   data: function() {
     return {
       number: '2',
-      title: 'Apprendre',
-      univers: 'Awake in the clearing',
+      title: 'Comprendre',
+      univers: 'La forêt mélodique',
     }
   },
   methods: {

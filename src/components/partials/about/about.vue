@@ -11,19 +11,19 @@
         <p class="about__explain"><span>Silent</span> is ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnansectetur adipiscing elit, sed do eiusmod tempor</p>
       </div>
       <div class="about__contributor">
-        <h1 class="about__contributorTitle">Contributors</h1>
+        <h1 class="about__contributorTitle">Contributeurs</h1>
         <div class="about__contributorName">
           <div class="about__contributorName__single">
             <p class="about__contributorName__singleTitle">Alexis Benoliel</p>
-            <p class="about__contributorName__singleTexte">Front-end Developer</p>
+            <p class="about__contributorName__singleTexte">Développeur Front-end</p>
           </div>
           <div class="about__contributorName__single">
             <p class="about__contributorName__singleTitle">Anna Baumann</p>
-            <p class="about__contributorName__singleTexte">Front-end Developer</p>
+            <p class="about__contributorName__singleTexte">Développeur Front-end</p>
           </div>
           <div class="about__contributorName__single">
-            <p class="about__contributorName__singleTitle">Paul Andriannof</p>
-            <p class="about__contributorName__singleTexte">Front-end Developer</p>
+            <p class="about__contributorName__singleTitle">Paul Andrianoff</p>
+            <p class="about__contributorName__singleTexte">Développeur Front-end</p>
           </div>
           <div class="about__contributorName__single">
             <p class="about__contributorName__singleTitle">Théo Rosel</p>
@@ -34,12 +34,12 @@
             <p class="about__contributorName__singleTexte">Designer</p>
           </div>
           <div class="about__contributorName__single">
-            <p class="about__contributorName__singleTitle">Jeremy Pichard</p>
-            <p class="about__contributorName__singleTexte">Project Manager</p>
+            <p class="about__contributorName__singleTitle">Jérémy Pichard</p>
+            <p class="about__contributorName__singleTexte">Chef de projet</p>
           </div>
         </div>
       </div>
-      <a href="#" class="about__close" v-on:click.prevent="closes">Close</a>
+      <a href="#" class="about__close" v-on:click.prevent="closes">Fermer</a>
     </div>
   </template>
 
