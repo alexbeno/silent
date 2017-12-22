@@ -6,7 +6,7 @@
 <!-- templating html -->
 <template>
   <div id="oneThree" class="oneThree game">
-    <img src="/static/image/level/background-3.png" alt="background" class="game__bg">
+    <img src="/static/image/level/background-1.png" alt="background" class="game__bg">
     <globalLvl :number="number" :title="title" :univers="univers" ></globalLvl>
     <canvas class="canvas_final"></canvas>
     <div class="game__brume"></div>
